@@ -1,7 +1,12 @@
-<style>
+html{height:90%;}
+body{height:90%;}
 
-body {
+.acc {
     background-color: lightblue;
+    margin-left: 170px;
+    border: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
 }
 h1 {
 
@@ -14,4 +19,9 @@ p {
     font-size: 20px;
 }
 
-</style>
+menu {
+	float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
