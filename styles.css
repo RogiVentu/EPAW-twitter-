@@ -1,10 +1,12 @@
 <style>
 
 body {
-    background-color: black;
+    background-color: lightblue;
 }
 h1 {
-    color: blue;
+
+	background-color: lightblue;
+    color: black;
     text-align: center;
 }
 p {
