@@ -8,6 +8,21 @@ body{height:90%;}
     padding: 1em;
     overflow: hidden;
 }
+
+.tweets {
+    background-color: lightblue;
+    margin-left: 170px;
+    border: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+.menu {
+	float: left;
+    max-width: 160px;
+    margin: 0;
+    border: 1px solid gray;
+    padding: 1em;
+}
 h1 {
 
 	background-color: lightblue;
