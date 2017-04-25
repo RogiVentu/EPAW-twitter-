@@ -25,14 +25,15 @@ public class HelloWorld extends HttpServlet {
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
-		out.println("<html><body>");
+		out.println("<html><head><link rel='stylesheet' href='styles.css'></head><body>");
         out.println("<h1> Hello World </h1>");
         out.println("<p><h2> There is a table of our database: <h2></p>");
+
 	
 		try {
 			DAO dao= new DAO();
             ResultSet rs = dao.executeSQL("SELECT * FROM taula");
-            out.println("<table border=1 width=50% height=50%>");
+            out.println("<table id='users'>");
             out.println("<tr><th>ID</th><th>Nombre</th><th>Descripción</th><th>Telefono</th><tr>");
             while (rs.next()) {
                 String n = rs.getString("nom");
@@ -41,14 +42,14 @@ public class HelloWorld extends HttpServlet {
                 int t = rs.getInt("telefon"); 
                 out.println("<tr><td>" + i + "</td><td>" + n + "</td><td>" + d + "</td><td>" + t + "</td></tr>"); 
             }
-            out.println("</table>");
-            out.println("</html></body>");
+            
+            out.println("</body></html>");
             dao.disconnectBD();
            }
             catch (Exception e) {
             out.println("error");
-        }
-
+            }
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
