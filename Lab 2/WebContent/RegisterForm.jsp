@@ -26,21 +26,19 @@
 		else {
 			message.innerHTML = " "
 		}
-
 	}
 </script>
 <script>
-	function hasNumbers(){    
+	function hasNumbers(id){    
 	    
-		var message = document.getElementById('hasNum');
+		var message = document.getElementById('hasNum' + id);
 
-	    if(/\d/.test(document.getElementById("name").value)){
+	    if(/\d/.test(document.getElementById(id).value)){
 	    	message.innerHTML = "Can't have numbers";
 	    }
 	    else {
 	    	message.innerHTML = " ";
 	    }
-	       
 	}
 </script>
 </head>
@@ -60,15 +58,15 @@
 
 			<p>
 				<label> Name </label> <input type="text" name="name" id="name"
-					value="<%=user.getName()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers();" required minlength="2" maxlength="15" />
-					<span id="hasNum" class="hasNum" value="num"></span>
+					value="<%=user.getName()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(name);" required minlength="2" maxlength="15" />
+					<span id="hasNumname" class="hasNumname"></span>
 					
 			</p>
 
 			<p>
-				<label> Surnames </label> <input type="text" name="surnames"
-					id="surnames" value="<%=user.getSurnames()%>" required
-					minlength="2" maxlength="31" />
+				<label> Surnames </label> <input type="text" name="surnames" id="surnames"
+					value="<%=user.getSurnames()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(surnames);" required minlength="4" maxlength="31" />
+					<span id="hasNumsurnames" class="hasNumsurnames" ></span>
 			</p>
 
 			<p>
@@ -94,17 +92,16 @@
 			</p>
 
 			<p>
-				<label for="pas1"> Password (Required, minimum 6 characters)
+				<label > Password (Required, minimum 6 characters)
 				</label> <input type="password" name="pas1" id="pas1"
 					value="<%=user.getPass()%>" required minlength="6" />
 			</p>
 
 			<p>
-				<label for="pas2"> Confirm Password (Required, minimum 6
+				<label > Confirm Password (Required, minimum 6
 					characters) </label> <input type="password" name="pas2" id="pas2"
-					value="<%=user.getPassconf()%>"
-					onchange="checkPass(); return false;" /> <span id="confirmMessage"
-					class="confirmMessage" value="werf"></span>
+					value="<%=user.getPassconf()%>"onchange="checkPass(); return false;"/> 
+					<span id="confirmMessage"class="confirmMessage" ></span>
 			</p>
 
 			<p>
