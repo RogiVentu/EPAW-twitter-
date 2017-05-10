@@ -34,7 +34,21 @@
 		var message = document.getElementById('hasNum' + id);
 
 	    if(/\d/.test(document.getElementById(id).value)){
-	    	message.innerHTML = "Can't have numbers";
+	    	message.innerHTML = "Can't have numbers ";
+	    }
+	    else {
+	    	message.innerHTML = " ";
+	    }
+	}
+</script>
+
+<script>
+	function hasDateFormat(){    
+	    
+		var message = document.getElementById('hasDate');
+
+	    if(document.getElementById("datebirth").length != 10){
+	    	message.innerHTML = "The data need to be in the format dd/mm/yyyy ";
 	    }
 	    else {
 	    	message.innerHTML = " ";
@@ -56,34 +70,42 @@
 	<form action="/Lab_2/FormController" method="post" id="registerForm">
 		<fieldset>
 
+
+			
 			<p>
 				<label> Name </label> <input type="text" name="name" id="name"
-					value="<%=user.getName()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(name);" required minlength="2" maxlength="15" />
+					value="<%=user.getName()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(id);" required minlength="2" maxlength="15" />
 					<span id="hasNumname" class="hasNumname"></span>
 					
 			</p>
 
 			<p>
 				<label> Surnames </label> <input type="text" name="surnames" id="surnames"
-					value="<%=user.getSurnames()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(surnames);" required minlength="4" maxlength="31" />
+					value="<%=user.getSurnames()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(id);" required minlength="4" maxlength="31" />
 					<span id="hasNumsurnames" class="hasNumsurnames" ></span>
 			</p>
 
 			<p>
-				<label> Gender </label> <input type="text" name="gender" id="gender"
-					value="<%=user.getGender()%>" required maxlength="31" />
+				<div type="text" name="gender" id="gender">
+					<label> Gender </label> 
+					<input type="radio" name="gender" value="male" checked> Male
+  					<input type="radio" name="gender" value="female"> Female
+  					<input type="radio" name="gender" value="other"> Other
+  					</div>
 			</p>
 
 			<p>
 				<label> Date of birth </label> <input type="text" name="datebirth"
-					id="datebirth" value="<%=user.getDatebirth()%>" required
-					maxlength="15" />
+					id="datebirth" value="<%=user.getDatebirth()%>" required onchange="hasDateFormat();"
+					maxlength="10"  placeholder="dd/mm/yyyy"/>
+					<span id="hasDate"class="hasDate" ></span>
 			</p>
 
 			<p>
-				<label> User id (Required, minimum 5 characters) </label> <input
+				<label> Username (Required, minimum 5 characters) </label> <input
 					type="text" name="user" id="user" value="<%=user.getUser()%>"
-					required minlength="5" />
+					required minlength="5" maxlength="25" />
+					
 				<%
 					if (user.getError()[0] == 1) {
 						out.println("The username already exists in our DB!");
@@ -100,7 +122,7 @@
 			<p>
 				<label > Confirm Password (Required, minimum 6
 					characters) </label> <input type="password" name="pas2" id="pas2"
-					value="<%=user.getPassconf()%>"onchange="checkPass(); return false;"/> 
+					value="<%=user.getPassconf()%>"onchange="checkPass();"/> 
 					<span id="confirmMessage"class="confirmMessage" ></span>
 			</p>
 
