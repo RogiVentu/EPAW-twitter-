@@ -58,52 +58,48 @@ public class BeanUser implements Serializable  {
 	/*Setters*/
 	
 	public void setName(String name) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (name)");
 		this.name = name;
+		System.out.println(this.name);
 	}
 	
 	public void setSurnames(String surnames) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (surnames)");
 		this.surnames = surnames;
 	}
 
 	public void setGender(String gender) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (gender)");
 		this.gender = gender;
 	}
 
 	
 	public void setDatebirth(String datebirth) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (datebirth)");
 		this.datebirth = datebirth;
 	}
 
 	public void setUser(String user){
 		
-		System.out.println("Filling user field");
+		System.out.println("Filling user field (user)");
 		/* We simulate a user with the same username exists in our DB */
-		error[0] = 1;
+		this.user = user;
+		//error[0] = 1;
 		
 	}
 
 	public void setPass(String pass) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (pass)");
 		this.pass = pass;
 	}
 
 	public void setPassconf(String passconf) {
-		System.out.println("Filling user field");
-		// We simulate a user with the same username exists in our DB 
+		System.out.println("Filling user field (passconf)");
 		this.passconf = passconf;
 	}
 	
 	public void setMail(String mail){
-		System.out.println("Filling mail field");
+		System.out.println("Filling mail field (mail)");
 		this.mail = mail;
 	}
 	
@@ -112,7 +108,12 @@ public class BeanUser implements Serializable  {
 	/*Check if all the fields are filled correctly */
 	public boolean isComplete() {
 	    return(hasValue(getUser()) &&
-	           hasValue(getMail()) );
+	           hasValue(getMail()) &&
+	           hasValue(getName()) &&
+	           hasValue(getSurnames()) &&
+	           hasValue(getGender()) &&
+	           hasValue(getDatebirth()) &&
+	           hasValue(getPass()));
 	}
 	
 	private boolean hasValue(String val) {

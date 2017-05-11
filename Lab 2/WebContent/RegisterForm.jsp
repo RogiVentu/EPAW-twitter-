@@ -27,8 +27,7 @@
 			message.innerHTML = " "
 		}
 	}
-</script>
-<script>
+
 	function hasNumbers(id){    
 	    
 		var message = document.getElementById('hasNum' + id);
@@ -40,9 +39,7 @@
 	    	message.innerHTML = " ";
 	    }
 	}
-</script>
 
-<script>
 	function hasDateFormat(){    
 	    
 		var message = document.getElementById('hasDate');
@@ -54,6 +51,7 @@
 	    	message.innerHTML = " ";
 	    }
 	}
+	
 </script>
 </head>
 <body>
@@ -70,27 +68,26 @@
 	<form action="/Lab_2/FormController" method="post" id="registerForm">
 		<fieldset>
 
-
 			
 			<p>
 				<label> Name </label> <input type="text" name="name" id="name"
-					value="<%=user.getName()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(id);" required minlength="2" maxlength="15" />
+					value="<%=user.getName()%>" pattern="[A-Za-z]" onchange="hasNumbers(id);" required minlength="2" maxlength="15" />
 					<span id="hasNumname" class="hasNumname"></span>
 					
 			</p>
-
+	
 			<p>
 				<label> Surnames </label> <input type="text" name="surnames" id="surnames"
-					value="<%=user.getSurnames()%>" pattern="[A-Za-z]{3}" onchange="hasNumbers(id);" required minlength="4" maxlength="31" />
+					value="<%=user.getSurnames()%>" pattern="[A-Za-z]" onchange="hasNumbers(id);" required minlength="4" maxlength="31" />
 					<span id="hasNumsurnames" class="hasNumsurnames" ></span>
 			</p>
 
 			<p>
 				<div type="text" name="gender" id="gender">
 					<label> Gender </label> 
-					<input type="radio" name="gender" value="male" checked> Male
-  					<input type="radio" name="gender" value="female"> Female
-  					<input type="radio" name="gender" value="other"> Other
+					<input type="radio" name="gender" value="<%=user.getGender()%>"> Male
+  					<input type="radio" name="gender" value="<%=user.getGender()%>"> Female
+  					<input type="radio" name="gender" value="<%=user.getGender()%>"> Other
   					</div>
 			</p>
 
@@ -106,11 +103,7 @@
 					type="text" name="user" id="user" value="<%=user.getUser()%>"
 					required minlength="5" maxlength="25" />
 					
-				<%
-					if (user.getError()[0] == 1) {
-						out.println("The username already exists in our DB!");
-					}
-				%>
+
 			</p>
 
 			<p>
@@ -132,7 +125,7 @@
 					required />
 			</p>
 
-			<input type="submit" value="Enviar">
+			<input type="submit" value="Enviar" onclick=>
 		</fieldset>
 	</form>
 </body>
