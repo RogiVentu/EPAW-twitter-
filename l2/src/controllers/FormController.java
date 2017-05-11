@@ -53,7 +53,7 @@ public class FormController extends HttpServlet {
 			    }
 		   } 
 		   else {
-			   System.out.println("yeeeepale");
+			   System.out.println("kno vaa");
 			   // Put the bean into the request as an attribute
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");

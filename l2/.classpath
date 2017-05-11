@@ -15,6 +15,10 @@
 	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-beanutils-1.9.3.jar"/>
 	<classpathentry exported="true" kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
-	<classpathentry exported="true" kind="lib" path="/EPAW/WebContent/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Usuario/workspace/l2/WebContent/WEB-INF/lib/mysql-connector-java-5.0.8-bin.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

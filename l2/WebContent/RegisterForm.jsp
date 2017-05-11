@@ -16,12 +16,12 @@
 </script>
 <script type="text/javascript">
 	function checkPass() {
-		var p1 = document.getElementById('pas1');
-		var p2 = document.getElementById('pas2');
+		var p = document.getElementById('pass');
+		var pc = document.getElementById('passconf');
 
 		var message = document.getElementById('confirmMessage');
 
-		if (p1.value != p2.value)
+		if (p.value != pc.value)
 			message.innerHTML = "Password doesn't match"
 		else {
 			message.innerHTML = " "
@@ -109,13 +109,13 @@
 
 			<p>
 				<label > Password (Required, minimum 6 characters)
-				</label> <input type="password" name="pas1" id="pas1"
+				</label> <input type="password" name="pass" id="pass"
 					value="<%=user.getPass()%>" required minlength="6" />
 			</p>
 
 			<p>
 				<label > Confirm Password (Required, minimum 6
-					characters) </label> <input type="password" name="pas2" id="pas2"
+					characters) </label> <input type="password" name="passconf" id="passconf"
 					value="<%=user.getPassconf()%>"onchange="checkPass();"/> 
 					<span id="confirmMessage"class="confirmMessage" ></span>
 			</p>
