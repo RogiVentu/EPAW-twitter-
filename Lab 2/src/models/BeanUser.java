@@ -66,17 +66,20 @@ public class BeanUser implements Serializable  {
 	public void setSurnames(String surnames) {
 		System.out.println("Filling user field (surnames)");
 		this.surnames = surnames;
+		System.out.println(this.surnames);
 	}
 
 	public void setGender(String gender) {
 		System.out.println("Filling user field (gender)");
 		this.gender = gender;
+		System.out.println(this.gender);
 	}
 
 	
 	public void setDatebirth(String datebirth) {
 		System.out.println("Filling user field (datebirth)");
 		this.datebirth = datebirth;
+		System.out.println(this.datebirth);
 	}
 
 	public void setUser(String user){
@@ -84,6 +87,7 @@ public class BeanUser implements Serializable  {
 		System.out.println("Filling user field (user)");
 		/* We simulate a user with the same username exists in our DB */
 		this.user = user;
+		System.out.println(this.user);
 		//error[0] = 1;
 		
 	}
@@ -91,16 +95,19 @@ public class BeanUser implements Serializable  {
 	public void setPass(String pass) {
 		System.out.println("Filling user field (pass)");
 		this.pass = pass;
+		System.out.println(this.pass);
 	}
 
 	public void setPassconf(String passconf) {
 		System.out.println("Filling user field (passconf)");
 		this.passconf = passconf;
+		System.out.println(this.passconf);
 	}
 	
 	public void setMail(String mail){
 		System.out.println("Filling mail field (mail)");
 		this.mail = mail;
+		System.out.println(this.mail);
 	}
 	
 	/* Logic Functions */
