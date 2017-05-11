@@ -84,10 +84,9 @@
 
 			<p>
 					<label> Gender </label> 
-					<input type="text" name="gender" id="gender" value="<%=user.getGender()%>">
-					<input type="radio" name="" value=""> Male
-  					<input type="radio" name="" value=""> Female
-  					<input type="radio" name="" value=""> Other
+				
+					<input type="text" name="gender" value="<%=user.getGender()%>">
+  	
 
 			</p>
 
@@ -125,7 +124,7 @@
 					required />
 			</p>
 
-			<input type="submit" value="Enviar" onclick=>
+			<input type="submit" value="Enviar">
 		</fieldset>
 	</form>
 </body>

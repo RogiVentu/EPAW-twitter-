@@ -43,9 +43,21 @@ public class FormController extends HttpServlet {
 		   
 		   if (user.isComplete()) {
 			   System.out.println("TODO: INSERT into DB");
+
+				try{
+				DAO dao = new DAO();
+				
+				dao.insertSQL(user);
+				
+				dao.disconnectBD();
+				}
+			    catch (Exception e) {
+		            System.out.println("error");
+		        }
+
 		   } 
 		   else {
-			   System.out.println("yeeee" + user.getName());
+			   System.out.println("adfsdg" + user.getName());
 			   // Put the bean into the request as an attribute
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");
@@ -55,17 +67,8 @@ public class FormController extends HttpServlet {
 		catch (IllegalAccessException | InvocationTargetException e) {
 				e.printStackTrace();
 	    }
-		try{
-		DAO dao = new DAO();
 		
-		dao.insertSQL(user);
 		
-		dao.disconnectBD();
-		}
-	    catch (Exception e) {
-            System.out.println("error");
-            }
-
 		//System.out.println(user.getGender() + user.getDatebirth() + user.getName());
 		    
     }
