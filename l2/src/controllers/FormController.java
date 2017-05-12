@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 
@@ -45,15 +46,21 @@ public class FormController extends HttpServlet {
 			   System.out.println("TODO: INSERT into DB");
 			   try{
 					DAO dao = new DAO();
+					
 					dao.insertSQL(user);
+					
+					if(dao.getStatus() > 0)
+						System.out.println("You have been registred!");
+					
 					dao.disconnectBD();
+						
 				}
 				catch (Exception e) {
 		            System.out.println("error");
 			    }
 		   } 
 		   else {
-			   System.out.println("kno vaa");
+			   System.out.println("Waiting to submit...");
 			   // Put the bean into the request as an attribute
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");

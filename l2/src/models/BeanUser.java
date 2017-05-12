@@ -58,30 +58,30 @@ public class BeanUser implements Serializable  {
 	/*Setters*/
 	
 	public void setName(String name) {
-		System.out.println("Filling user field (name)");
+		System.out.println("Filling name field");
 		this.name = name;
 		System.out.println(this.name);
 	}
 	
 	public void setSurnames(String surnames) {
-		System.out.println("Filling user field (surnames)");
+		System.out.println("Filling surnames field");
 		this.surnames = surnames;
 	}
 
 	public void setGender(String gender) {
-		System.out.println("Filling user field (gender)");
+		System.out.println("Filling gender field");
 		this.gender = gender;
 	}
 
 	
 	public void setDatebirth(String datebirth) {
-		System.out.println("Filling user field (datebirth)");
+		System.out.println("Filling datebirth field");
 		this.datebirth = datebirth;
 	}
 
 	public void setUser(String user){
 		
-		System.out.println("Filling user field (user)");
+		System.out.println("Filling user field");
 		/* We simulate a user with the same username exists in our DB */
 		this.user = user;
 		//error[0] = 1;
@@ -89,17 +89,17 @@ public class BeanUser implements Serializable  {
 	}
 
 	public void setPass(String pass) {
-		System.out.println("Filling user field (pass)");
+		System.out.println("Filling pass field");
 		this.pass = pass;
 	}
 
 	public void setPassconf(String passconf) {
-		System.out.println("Filling user field (passconf)");
+		System.out.println("Filling passconf field");
 		this.passconf = passconf;
 	}
 	
 	public void setMail(String mail){
-		System.out.println("Filling mail field (mail)");
+		System.out.println("Filling mail field");
 		this.mail = mail;
 	}
 	

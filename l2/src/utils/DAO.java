@@ -6,6 +6,8 @@ import models.BeanUser;
 public class DAO {
 	private Connection connection;
 	private Statement statement;
+	private PreparedStatement ps;
+	int status;
 
 	public DAO() throws Exception {
 		String user = "mysql";
@@ -21,7 +23,8 @@ public class DAO {
 	}
 	
 	public void insertSQL(BeanUser user) throws SQLException{
-		PreparedStatement ps = connection.prepareStatement("INSERT INTO users VALUES(?,?,?,?,?,?,?)");
+		
+		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?);");
 		ps.setString(1, user.getUser());
 		ps.setString(2, user.getPass());
 		ps.setString(3, user.getMail());
@@ -29,18 +32,22 @@ public class DAO {
 		ps.setString(5, user.getSurnames());
 		ps.setString(6, user.getGender());
 		ps.setString(7, user.getDatebirth());
-		System.out.println("POS SI Q LLEGA lko");
 		
+		status = ps.executeUpdate();;
 		
 		/*statement.executeUpdate("insert into users values (" + user.getUser()+","+user.getPass()+","+user.getMail()+","+user.getName()+
-		","+user.getSurnames()+","+user.getGender()+","+user.getDatebirth()+")");
-
-		System.out.println("HAS SIDO REGISTRADO CORRECTAMENTE");*/
+		","+user.getSurnames()+","+user.getGender()+","+user.getDatebirth()+");");*/
+			
 	}
 
 	// TODO: code for updates for Assignments 2, 3 and 4.
 	public void disconnectBD() throws SQLException {
 		statement.close();
 		connection.close();
+		ps.close();
+	}
+	
+	public int getStatus(){
+		return status;
 	}
 }
