@@ -43,6 +43,7 @@ public class FormController extends HttpServlet {
 		   
 		   if (user.isComplete()) {
 			   System.out.println("TODO: INSERT into DB");
+<<<<<<< HEAD
 			   try{
 					DAO dao = new DAO();
 					dao.insertSQL(user);
@@ -54,6 +55,23 @@ public class FormController extends HttpServlet {
 		   } 
 		   else {
 			   System.out.println("yeeeepale");
+=======
+
+				try{
+				DAO dao = new DAO();
+				
+				dao.insertSQL(user);
+				
+				dao.disconnectBD();
+				}
+			    catch (Exception e) {
+		            System.out.println("error");
+		        }
+
+		   } 
+		   else {
+			   System.out.println("adfsdg" + user.getName());
+>>>>>>> 3c1c6062d2fb4756d6dbb0b4e18eee94d4d40e48
 			   // Put the bean into the request as an attribute
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");
@@ -64,7 +82,11 @@ public class FormController extends HttpServlet {
 				e.printStackTrace();
 	    }
 		
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 3c1c6062d2fb4756d6dbb0b4e18eee94d4d40e48
 		//System.out.println(user.getGender() + user.getDatebirth() + user.getName());
 		    
     }

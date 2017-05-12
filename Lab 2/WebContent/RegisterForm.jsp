@@ -16,12 +16,12 @@
 </script>
 <script type="text/javascript">
 	function checkPass() {
-		var p1 = document.getElementById('pas1');
-		var p2 = document.getElementById('pas2');
+		var p = document.getElementById('pass');
+		var pc = document.getElementById('passconf');
 
 		var message = document.getElementById('confirmMessage');
 
-		if (p1.value != p2.value)
+		if (p.value != pc.value)
 			message.innerHTML = "Password doesn't match"
 		else {
 			message.innerHTML = " "
@@ -83,18 +83,24 @@
 			</p>
 
 			<p>
-				<div type="text" name="gender" id="gender">
 					<label> Gender </label> 
+<<<<<<< HEAD
 					<input type="text" name="gender" value= "<%=user.getGender()%>">
 					<input type="radio" name="gender" value="<%=user.getGender()%>"> Male
   					<input type="radio" name="gender" value="<%=user.getGender()%>"> Female
   					<input type="radio" name="gender" value="<%=user.getGender()%>"> Other
   					</div>
+=======
+				
+					<input type="text" name="gender" value="<%=user.getGender()%>">
+  	
+
+>>>>>>> 3c1c6062d2fb4756d6dbb0b4e18eee94d4d40e48
 			</p>
 
 			<p>
 				<label> Date of birth </label> <input type="text" name="datebirth"
-					id="datebirth" value="<%=user.getDatebirth()%>" required onchange="hasDateFormat();"
+					id="datebirth" value= "<%=user.getDatebirth()%>" required onchange="hasDateFormat();"
 					maxlength="10"  placeholder="dd/mm/yyyy"/>
 					<span id="hasDate"class="hasDate" ></span>
 			</p>
@@ -109,13 +115,13 @@
 
 			<p>
 				<label > Password (Required, minimum 6 characters)
-				</label> <input type="password" name="pas1" id="pas1"
+				</label> <input type="password" name="pass" id="pass"
 					value="<%=user.getPass()%>" required minlength="6" />
 			</p>
 
 			<p>
 				<label > Confirm Password (Required, minimum 6
-					characters) </label> <input type="password" name="pas2" id="pas2"
+					characters) </label> <input type="password" name="passconf" id="passconf"
 					value="<%=user.getPassconf()%>"onchange="checkPass();"/> 
 					<span id="confirmMessage"class="confirmMessage" ></span>
 			</p>
