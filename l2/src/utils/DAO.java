@@ -22,7 +22,7 @@ public class DAO {
 		return statement.executeQuery(query);
 	}
 	
-	public void insertSQL(BeanUser user) throws SQLException{
+	public void insertUserSQL(BeanUser user) throws SQLException{
 		
 		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?);");
 		ps.setString(1, user.getUser());

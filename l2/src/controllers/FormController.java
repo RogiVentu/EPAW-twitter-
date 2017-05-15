@@ -46,8 +46,18 @@ public class FormController extends HttpServlet {
 			   System.out.println("TODO: INSERT into DB");
 			   try{
 					DAO dao = new DAO();
+
+					ResultSet rs = dao.executeSQL("SELECT username FROM users");
 					
-					dao.insertSQL(user);
+					while (rs.next())
+					{
+						if (rs.getString("username").equalsIgnoreCase(user.getUser()))
+						{
+							System.out.println("This username already exists");
+							dao.disconnectBD();
+						}
+					}
+					dao.insertUserSQL(user);
 					
 					if(dao.getStatus() > 0)
 						System.out.println("You have been registred!");
@@ -60,7 +70,7 @@ public class FormController extends HttpServlet {
 			    }
 		   } 
 		   else {
-			   System.out.println("Waiting to submit...");
+			   System.out.println("Waiting to submit... YAYEYEE");
 			   // Put the bean into the request as an attribute
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("/RegisterForm.jsp");

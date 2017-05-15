@@ -44,12 +44,58 @@
 	    
 		var message = document.getElementById('hasDate');
 
-	    if(document.getElementById("datebirth").length != 10){
-	    	message.innerHTML = "The data need to be in the format dd/mm/yyyy ";
+	    if(document.getElementById("datebirth").value.length != 10){
+	    	message.innerHTML = "The date need to be in the format dd/mm/yyyy ";
+	    	
 	    }
 	    else {
 	    	message.innerHTML = " ";
 	    }
+	}
+	
+	function hasRates(){
+		
+		if(document.getElementById('r1').checked)
+			user.getGender() = document.getElementById('r1').value;
+		else if(document.getElementById('r2').checked)
+			user.getGender() = document.getElementById('r2').value;
+		else if(document.getElementById('r3').checked)
+			user.getGender() = document.getElementById('r3').value;
+		else{
+			alert ('You need to choose one gender');
+			return false;
+		}
+	}
+	
+	function hasGoodPassConf(){
+		
+		var p = document.getElementById('pass').value;
+		var pc = document.getElementById('passconf').value;		
+			  
+		if(p != pc){
+			alert('The passwords need to be the same');
+			return false;
+		}
+	}
+	
+	function hasDateAlert(){
+		
+		var date = document.getElementById('datebirth').value;
+		if(date.length != 10){
+			alert('The date need to be in the format dd/mm/yyyy');
+			return false;
+		}
+			
+			
+	}
+	
+	function validacion(){
+		
+		hasDateAlert();
+		hasRates();
+		hasGoodPassConf();
+		
+		return true;
 	}
 	
 </script>
@@ -65,7 +111,7 @@
 		}
 	%>
 
-	<form action="/Lab_2/FormController" method="post" id="registerForm">
+	<form action="/Lab_2/FormController" method="post" id="registerForm" onsubmit="return validacion()">
 		<fieldset>
 
 			
@@ -83,13 +129,10 @@
 			</p>
 
 			<p>
-				<div type="text" name="gender" id="gender">
 					<label> Gender </label> 
-					<input type="text" name="gender" value= "<%=user.getGender()%>">
-					<input type="radio" name="gender" value="<%=user.getGender()%>"> Male
-  					<input type="radio" name="gender" value="<%=user.getGender()%>"> Female
-  					<input type="radio" name="gender" value="<%=user.getGender()%>"> Other
-  					</div>
+					<input type="radio" id="r1" name="gender" value="Male"> Male
+  					<input type="radio" id="r2" name="gender" value="Female"> Female
+  					<input type="radio" id="r3" name="gender" value="Other"> Other
 			</p>
 
 			<p>
@@ -116,8 +159,8 @@
 			<p>
 				<label > Confirm Password (Required, minimum 6
 					characters) </label> <input type="password" name="passconf" id="passconf"
-					value="<%=user.getPassconf()%>"onchange="checkPass();"/> 
-					<span id="confirmMessage"class="confirmMessage" ></span>
+					value="<%=user.getPassconf()%>" required onchange="checkPass();"/> 
+					<span id="confirmMessage"class="confirmMessage"  ></span>
 			</p>
 
 			<p>

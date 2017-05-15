@@ -60,7 +60,6 @@ public class BeanUser implements Serializable  {
 	public void setName(String name) {
 		System.out.println("Filling name field");
 		this.name = name;
-		System.out.println(this.name);
 	}
 	
 	public void setSurnames(String surnames) {
