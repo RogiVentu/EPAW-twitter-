@@ -1,6 +1,9 @@
 package utils;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import models.BeanUser;
 
 public class DAO {
@@ -21,7 +24,20 @@ public class DAO {
 	public ResultSet executeSQL(String query) throws SQLException {
 		return statement.executeQuery(query);
 	}
-	
+	public ArrayList<String> listUsernames() throws SQLException
+	{
+		
+			ResultSet rs;
+			rs = statement.executeQuery("SELECT username FROM users");
+			
+			ArrayList<String> us = new ArrayList<String>();
+			while(rs.next())
+			{
+				us.add(rs.getString("username"));
+			}
+			return us;
+		
+	}
 	public void insertUserSQL(BeanUser user) throws SQLException{
 		
 		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?);");

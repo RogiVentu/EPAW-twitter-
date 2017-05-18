@@ -1,6 +1,8 @@
 package models;
 
 import java.io.Serializable;
+import java.sql.ResultSet;
+import utils.DAO;
 
 public class BeanUser implements Serializable  {
 
@@ -57,6 +59,10 @@ public class BeanUser implements Serializable  {
 	
 	/*Setters*/
 	
+	
+	public void setError(int er){
+		this.error[0] = er;
+	}
 	public void setName(String name) {
 		System.out.println("Filling name field");
 		this.name = name;
@@ -82,8 +88,28 @@ public class BeanUser implements Serializable  {
 		
 		System.out.println("Filling user field");
 		/* We simulate a user with the same username exists in our DB */
+		
+		try{
+			DAO dao = new DAO();
+			ResultSet rs = dao.executeSQL("SELECT username FROM users");
+			
+			while (rs.next())
+			{
+				if (rs.getString("username").equalsIgnoreCase(user))
+				{
+					System.out.println("Username already exists");
+					this.error[0]=1;
+					return;
+				}
+			}
+			dao.disconnectBD();
+		}
+		catch (Exception e) {
+            //System.out.println("");
+	    }
+		
 		this.user = user;
-		//error[0] = 1;
+		
 		
 	}
 
@@ -99,6 +125,26 @@ public class BeanUser implements Serializable  {
 	
 	public void setMail(String mail){
 		System.out.println("Filling mail field");
+		
+		try{
+			DAO dao = new DAO();
+			ResultSet rs = dao.executeSQL("SELECT email FROM users");
+			
+			while (rs.next())
+			{
+				if (rs.getString("email").equalsIgnoreCase(mail))
+				{
+					System.out.println("Email already exists");
+					this.error[1]=1;
+					return;
+				}
+			}
+			dao.disconnectBD();
+		}
+		catch (Exception e) {
+            //System.out.println("");
+	    }
+		
 		this.mail = mail;
 	}
 	
