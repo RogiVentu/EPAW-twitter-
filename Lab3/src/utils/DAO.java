@@ -40,7 +40,7 @@ public class DAO {
 	}
 	public void insertUserSQL(BeanUser user) throws SQLException{
 		
-		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?)");
+		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?);");
 		ps.setString(1, user.getUser());
 		ps.setString(2, user.getPass());
 		ps.setString(3, user.getMail());
@@ -53,14 +53,14 @@ public class DAO {
 		
 		/*statement.executeUpdate("insert into users values (" + user.getUser()+","+user.getPass()+","+user.getMail()+","+user.getName()+
 		","+user.getSurnames()+","+user.getGender()+","+user.getDatebirth()+");");*/
-			
+		
 	}
 
 	// TODO: code for updates for Assignments 2, 3 and 4.
 	public void disconnectBD() throws SQLException {
 		statement.close();
 		connection.close();
-		ps.close();
+		//ps.close();
 	}
 	
 	public int getStatus(){

@@ -60,7 +60,7 @@ public class DAO {
 	public void disconnectBD() throws SQLException {
 		statement.close();
 		connection.close();
-		ps.close();
+		//ps.close();
 	}
 	
 	public int getStatus(){

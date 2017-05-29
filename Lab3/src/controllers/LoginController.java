@@ -36,8 +36,8 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("LoginController.");
-		
 		BeanLogin login = new BeanLogin();
+		
 	    try {
 			
 	    	BeanUtils.populate(login, request.getParameterMap());
@@ -51,7 +51,7 @@ public class LoginController extends HttpServlet {
 			    
 		    } 
 			else {
-		     
+				
 			    request.setAttribute("login",login);
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 			    dispatcher.forward(request, response);

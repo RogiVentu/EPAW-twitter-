@@ -35,11 +35,12 @@ public class RegisterController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	   System.out.println("RegisterController.");
+	   System.out.println("RegisterController. ASDFASDF");
+	   BeanUser user = new BeanUser();
 		
 	   try {
 	
-		   BeanUser user = new BeanUser();
+		   
 		   BeanUtils.populate(user, request.getParameterMap());
 		
 		   if (user.isComplete()) {
@@ -58,12 +59,12 @@ public class RegisterController extends HttpServlet {
 						
 				}
 				catch (Exception e) {
-		            System.out.println("error ????");
+		            System.out.println("error ???? JKODER");
 			    }
 			   
 		   } 
 		   else {
-		
+			   System.out.println("Waiting to submit...YA CASIL");
 			   request.setAttribute("user",user);
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
 			   dispatcher.forward(request, response);

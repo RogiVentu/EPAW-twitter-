@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" import="models.BeanUser" session="false"%>
+
+	<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="models.BeanUser"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,9 +86,17 @@
 				})
 	</script>
 	<div id="formular">
+		
+		<%
+		BeanUser user = null;
+		if (request.getAttribute("user") != null) {
+			user = (BeanUser) request.getAttribute("user");
+		} else {
+			user = new BeanUser();
+		}
+	%>
 
-		<form action="/Lab3/controllers.FormController" id="registerForm"
-			method="POST" onsubmit="return validacion()">
+		<form action="/Lab3/RegisterController" method = "post" id="registerForm" onsubmit="return validacion()">
 			<fieldset>
 				<div class="form-group">
 					<label> Username </label>
@@ -95,12 +104,22 @@
 						<input type="text" name="user" id="user" class="form-control"
 							value="${user.user}" />
 					</div>
+					<% 
+					if ( user.getError()[0] == 1) {
+						out.println("The username already exists in our DB!");
+					}
+					%>
 				</div>
 
 				<div class="form-group">
 					<label> E-mail (Required, valid e-mail adress) </label> <input
 						type="email" name="mail" class="form-control" id="mail"
 						value="${user.mail}" />
+						<% 
+						if ( user.getError()[1] == 1) {
+							out.println("This email already exists in our DB!");
+						}
+						%>
 				</div>
 
 				<div class="form-group">
@@ -141,7 +160,7 @@
 				<div class="form-group">
 					<label>Datebirth</label>
 					<div class="input-group date">
-						<input class="form-control" id="datebirth" name="date"
+						<input class="form-control" id="datebirth" name="datebirth"
 							placeholder="DD/MM/YYYY" type="text" value="${user.datebirth}"
 							required onchange="hasDateFormat();" maxlength="10">
 					</div>

@@ -1,23 +1,23 @@
 package models;
 
+import java.io.Serializable;
 import java.sql.ResultSet;
-
 import utils.DAO;
 
-public class BeanUser implements java.io.Serializable {
+public class BeanUser implements Serializable  {
 
 	private static final long serialVersionUID = 1L;
-	
 
-	private String name = "PABLO ";
-	private String surnames = "ESCOBAR";
-	private String gender= "FEMALE";
-	private String datebirth= "345345";
-	private String user = "malpaario";
-	private String pass = "1qwe4r4";
-	private String passconf = "9i3e9i";
-	private String mail = "mede@yin";
+	private String name = "";
+	private String surnames = "";
+	private String gender= "";
+	private String datebirth= "";
+	private String user = "";
+	private String pass = "";
+	private String passconf = "";
+	private String mail = "";
 	
+	/*  Control which parameters have been correctly filled */
 	private int[] error = {0,0}; 
 	
 	/* Getters */
@@ -69,33 +69,32 @@ public class BeanUser implements java.io.Serializable {
 	}
 	
 	public void setSurnames(String surnames) {
-		System.out.println("Filling surnames field" + surnames);
+		System.out.println("Filling surnames field");
 		this.surnames = surnames;
 	}
 
 	public void setGender(String gender) {
-		System.out.println("Filling gender field" + gender + "!");
+		System.out.println("Filling gender field");
 		this.gender = gender;
+		
 	}
 
 	
 	public void setDatebirth(String datebirth) {
-		System.out.println("Filling datebirth field");
+		System.out.println("Filling datebirth field: ");
 		this.datebirth = datebirth;
 	}
 
 	public void setUser(String user){
 		
-		System.out.println("Filling user field");
+		System.out.println("Filling user field: ");
 		/* We simulate a user with the same username exists in our DB */
 		
 		try{
 			DAO dao = new DAO();
-			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '"+user+"'");
+			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" +user+"'");
 			
-			if (rs.wasNull())
-				this.error[0] = 0;
-			else
+			if (rs.first())
 			{
 				System.out.println("Username already exists");
 				this.error[0]=1;
@@ -108,12 +107,13 @@ public class BeanUser implements java.io.Serializable {
 					System.out.println("Username already exists");
 					this.error[0]=1;
 					return;
+					
 				}
 			}*/
-			dao.disconnectBD();
+		dao.disconnectBD();
 		}
 		catch (Exception e) {
-            //System.out.println("");
+            System.out.println("TU PUTA MADRE");
 	    }
 		
 		this.user = user;
@@ -136,21 +136,16 @@ public class BeanUser implements java.io.Serializable {
 		
 		try{
 			DAO dao = new DAO();
-			ResultSet rs = dao.executeSQL("SELECT email FROM users WHERE email = '"+mail+"'");
+			ResultSet rs = dao.executeSQL("SELECT email FROM users WHERE email = '" +mail+"'");
 			
-			if (rs.wasNull())
-				this.error[1] = 0;
-			else
+			if (rs.first())
 			{
 				System.out.println("Email already exists");
 				this.error[1]=1;
 				return;
 			}
-		/*try{
-			DAO dao = new DAO();
-			ResultSet rs = dao.executeSQL("SELECT email FROM users");
 			
-			while (rs.next())
+			/*while (rs.next())
 			{
 				if (rs.getString("email").equalsIgnoreCase(mail))
 				{
@@ -162,13 +157,17 @@ public class BeanUser implements java.io.Serializable {
 			dao.disconnectBD();
 		}
 		catch (Exception e) {
-            //System.out.println("");
+            System.out.println("fk u");
 	    }
 		
 		this.mail = mail;
+		
+		
 	}
 	
 	/* Logic Functions */
+	
+	/*Check if all the fields are filled correctly */
 	public boolean isComplete() {
 	    return(hasValue(getUser()) &&
 	           hasValue(getMail()) &&
@@ -182,4 +181,6 @@ public class BeanUser implements java.io.Serializable {
 	private boolean hasValue(String val) {
 		return((val != null) && (!val.equals("")));
 	}
+
+
 }
