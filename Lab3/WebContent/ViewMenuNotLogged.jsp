@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 <table>
 <tr>
-<td> <a class="menu" id="RegisterController" href=#> Registration </a> </td>
-<td> <a class="menu" id="LoginController" href=#> Login </a> </td>
+<td> <a class="menu" id="RegisterController" href="ViewRegisterForm.jsp"> Registration </a> </td>
+<td> <a class="menu" id="LoginController" href="ViewLoginForm.jsp"> Login </a> </td>
 </tr>
 </table>	
