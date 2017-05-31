@@ -86,10 +86,8 @@
 				})
 	</script>
 	
-	<div id="navigation">
-		<jsp:include page="ViewMenuNotLogged.jsp" />
-	</div>
 	
+	<jsp:include page="ViewMenuNotLogged.jsp" />
 	<div id="formular">
 
 		<%

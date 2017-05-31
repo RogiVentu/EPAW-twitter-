@@ -15,21 +15,18 @@ body {
 	min-height: 100%;
 }
 
-#faux {
-	background: url(faux-2-3-col.gif);
-	margin-bottom: 0px;
-	overflow: auto; /* Paul O Brien Fix for IE www.pmob.co.uk */
-	width: 100%
-	padding-left:40%;
-	padding-right: 40%;
-	padding-bottom: 20%;
+#nav_wrapper {
+	background: black;
+	opacity: 0.5;
+	margin: 0 auto;
+	width: 100%;
+	min-height: 100%;
 }
 
-#navigation ul{
-	padding-top: 1%;
-	padding-bottom: 1%;
-	margin: 0px 0px 0px 0px;
-	background: #22222a;
+
+
+#nav_wrapper ul{
+	background: Black;
 	color: white;
 }
 
@@ -41,12 +38,9 @@ body {
 
 #nav_wrapper ul li{
 	list-style-type: none;
+	
 	display: inline-block;
 	
-}
-
-#nav_wrapper li a{
-	display: block;
 }
 
 #leftcolumn {
@@ -59,13 +53,11 @@ body {
 }
 
 #content {
-	float: left;
-	color: #333;
-	margin: 10px 13px;
-	padding: 0px;
-	width: 460px;
-	display: inline;
-	position: relative;
+	align-items: center;
+	padding-top: 10%;
+	margin-bottom: 10%;
+	margin-left: 40%;
+	margin-right: 40%;
 }
 
 #rightcolumn {
@@ -79,12 +71,15 @@ body {
 }
 
 #footer {
-	width: 902px;
-	clear: both;
-	color: #333;
-	background: #ABBEBE;
-	margin: 0px 0px 10px 0px;
-	padding: 10px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  color: white;
+}
+
+#footext {
+	color: white;
 }
 
 .clear {

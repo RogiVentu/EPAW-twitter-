@@ -33,9 +33,7 @@
 		 <div id="faux">
 		 
 		       <!-- Begin Left Column -->
-		       <div id="leftcolumn">
-		 
-		       </div>
+		      <!--   <div id="leftcolumn"> </div>-->
 		       <!-- End Left Column -->
 		 
 		       <!-- Begin Content Column -->
@@ -47,9 +45,7 @@
 		       <!-- End Content Column -->
 			   
 			   <!-- Begin Right Column -->
-		       <div id="rightcolumn">
-		 
-		       </div>
+		       <!-- <div id="rightcolumn"> </div> -->
 		       <!-- End Right Column -->
 
          </div>	   
@@ -58,7 +54,7 @@
          <!-- Begin Footer -->
          <div id="footer">
 		       
-               This is the Footer		
+               <p id=footext>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>		
 
          </div>
 		 <!-- End Footer -->
