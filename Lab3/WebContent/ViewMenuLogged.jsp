@@ -9,10 +9,21 @@ $(document).ready(function() {
 });
 </script>
 
-<table>
-<tr>
-<td> <a class="menu" id="LogoutController" href=#> Logout </a> </td>
-</tr>
-</table>
+<head>
+<link rel="stylesheet" type="text/css" href="css/structure.css" />
+</head>
+<body>
 
+<div id="nav_wrapper">
+	<ul>
+		<li><a  class="menu" id="" href=""> Init </a></li>
+		<li><a  class="menu" id="" href=""> Your tweets </a></li>
+		<li><a  class="menu" id="" href=""> Profile </a></li>
+		<li><a  class="menu" id="" href=""> Next Events </a></li>
+		<li><a  class="menu" id="" href=""> About us </a></li>
+		<li><a class="menu" id="LogoutController" href=#> Logout </a></li>
+	</ul>
+	
+</div>
 
+</body>

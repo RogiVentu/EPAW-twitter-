@@ -124,6 +124,7 @@ public class BeanUser implements Serializable  {
 	public void setPass(String pass) {
 		System.out.println("Filling pass field");
 		this.pass = pass;
+		
 	}
 
 	public void setPassconf(String passconf) {

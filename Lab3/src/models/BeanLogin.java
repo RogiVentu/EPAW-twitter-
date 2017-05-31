@@ -3,11 +3,13 @@ package models;
 import java.sql.ResultSet;
 import utils.DAO;
 
+
 public class BeanLogin {
 
 	private String user = "";
 	private String pass = "";
 	private int[] error = {0,0};
+	public String auxuser = "";
 	
 	public String getUser(){
 		return user;
@@ -34,14 +36,15 @@ public class BeanLogin {
 			System.out.println("Exceptione cojida mijo de user");
 		}
 		this.user = user;
+		
 	}
 	
 	public void setPass(String pass){
 		
 		try{
+			//System.out.println("ASDAsd: " + this.user  + " dasd");
 			DAO dao = new DAO();
-			ResultSet rs = dao.executeSQL("SELECT password FROM users WHERE username = '" +this.user+ "' AND password = '" +pass+ "'");
-			
+			ResultSet rs = dao.executeSQL("SELECT password FROM users WHERE password = '" +pass+ "'");
 			if (!rs.first())
 			{
 				System.out.println("Incorrect password");

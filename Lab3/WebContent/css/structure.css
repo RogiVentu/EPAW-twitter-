@@ -4,6 +4,7 @@
 }
 
 body {
+	background-image: url("tupac_bck.jpg");
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 13px;
 	height: 800px;
@@ -24,11 +25,6 @@ body {
 }
 
 
-
-#nav_wrapper ul{
-	background: Black;
-	color: white;
-}
 
 #nav_wrapper ul a{
 	text-decoration: none;

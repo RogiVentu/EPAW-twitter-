@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" session="false"%>
+	pageEncoding="UTF-8" session="false" import="models.BeanLogin"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -49,6 +49,15 @@
 			});
 </script>
 
+	<%
+			BeanLogin login = null;
+			if (request.getAttribute("login") != null) {
+				login = (BeanLogin) request.getAttribute("login");
+			} else {
+				login = new BeanLogin();
+			}
+		%>
+		
 	<form  action="/Lab3/LoginController" id="loginForm" method="post">
 		<fieldset>
 			<div class="form-group">
@@ -66,7 +75,7 @@
 				<label> Password </label>
 				<div class="input-group">
 					<input type="password" name="pass" class="form-control" id="pass"
-						value="${user.pass}" />
+						value="${login.pass}" />
 				</div>
 				<c:if test="${login.error[1] == 1}">
 					<span class="error">Incorrect password!</span>
