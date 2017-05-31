@@ -9,4 +9,4 @@ $(document).ready(function() {
 
 
 
-Login for user ${user} done peeta!
+<p style="color: #ffffff">Login for user ${user} done!</p>

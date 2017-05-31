@@ -53,7 +53,7 @@ public class LoginController extends HttpServlet {
 			else {
 				
 			    request.setAttribute("login",login);
-			    RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 			    dispatcher.forward(request, response);
 		    	
 		    }

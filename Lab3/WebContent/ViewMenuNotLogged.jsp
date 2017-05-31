@@ -11,8 +11,8 @@ $(document).ready(function() {
 
 <div id="nav_wrapper">
 	<ul>
-		<li><a class="menu" id="RegisterController" href="ViewRegisterForm.jsp"> Registration </a></li>
-		<li><a  class="menu" id="LoginController" href="index.jsp"> Login </a></li>
+		<li><a class="menu" id="RegisterController" href="RegisterController"> Registration </a></li>
+		<li><a  class="menu" id="LoginController" href="MainController"> Login </a></li>
 	</ul>
 	
 </div>

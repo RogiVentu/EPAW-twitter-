@@ -86,8 +86,9 @@
 				})
 	</script>
 	
-	
+
 		<jsp:include page="ViewMenuNotLogged.jsp" />
+
 	
 	<div id="formular">
 
