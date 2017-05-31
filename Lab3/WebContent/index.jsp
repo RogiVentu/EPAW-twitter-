@@ -16,18 +16,16 @@
    <div id="wrapper">
    
          <!-- Begin Header -->
-         <div id="header">
+         <!--<div id="header">
 		 
 		       This is the Header		 
 			   
-		 </div>
+		 </div>-->
 		 <!-- End Header -->
 		 
 		 <!-- Begin Navigation -->
          <div id="navigation">
-		 
-	     <jsp:include page="ViewMenuNotLogged.jsp" />
-			   
+		 		<jsp:include page="ViewMenuNotLogged.jsp" />			   
 		 </div>
 		 <!-- End Navigation -->
 		 
