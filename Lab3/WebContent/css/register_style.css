@@ -15,14 +15,13 @@ label {
 }
 
 #nav_wrapper {
-	backgroud: black;
+	background: black;
 	opacity: 0.5;
+	margin: 0 auto;
+	width: 100%;
+	min-height: 100%;
 }
-#nav_wrapper ul{
-	padding-top: 1%;
-	padding-bottom: 1%;
-	margin: 0px 0px 0px 0px;
-	color: white;
+
 }
 
 #nav_wrapper ul a{
@@ -35,10 +34,6 @@ label {
 	list-style-type: none;
 	display: inline-block;
 	
-}
-
-#nav_wrapper li a{
-	display: block;
 }
 
 #formular {

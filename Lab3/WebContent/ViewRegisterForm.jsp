@@ -87,7 +87,7 @@
 	</script>
 	
 
-		<jsp:include page="ViewMenuNotLogged.jsp" />
+	<jsp:include page="ViewMenuNotLogged.jsp" />
 
 	
 	<div id="formular">
@@ -157,7 +157,7 @@
 				</div>
 
 				<div class="form-inline">
-					<label> Gender </label> <label> Male </label> <input type="radio"
+					<label> Gender :	</label> <label> Male </label> <input type="radio"
 						id="r1" name="gender" value="Male"> <label> Female</label>
 					<input type="radio" id="r2" name="gender" value="Female"> <label>
 						Other </label> <input type="radio" id="r3" name="gender" value="Other">

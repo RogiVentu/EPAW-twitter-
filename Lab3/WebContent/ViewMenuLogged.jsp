@@ -23,7 +23,8 @@ $(document).ready(function() {
 		<li><a  class="menu" id="" href=""> About us </a></li>
 		<li><a class="menu" id="LogoutController" href="LogoutController"> Logout </a></li>
 	</ul>
-	<p> ESTAS EN EK MENU CON LA SESSION INICIADA</p>
 </div>
+	
+	<p style="color: #ffffff"> You are logged as ${user}, there is the menu logged </p>
 
 </body>

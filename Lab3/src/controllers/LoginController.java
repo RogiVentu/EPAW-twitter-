@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.ResultSet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 
 import models.BeanLogin;
+import utils.DAO;
 
 /**
  * Servlet implementation class LoginController
@@ -41,13 +43,45 @@ public class LoginController extends HttpServlet {
 	    try {
 			
 	    	BeanUtils.populate(login, request.getParameterMap());
-			
+	    	
 	    	if (login.isComplete()) {
-		    	
-		    	HttpSession session = request.getSession();
-		    	session.setAttribute("user",login.getUser());
-		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
-			    dispatcher.forward(request, response);
+	    		
+	    		try{
+	    			DAO dao = new DAO();
+	    			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" + login.getUser() + "'");
+	    			if(!rs.next())
+	    			{
+	    				System.out.println("Username doesn't exist");
+	    				login.setErrorU(1);
+	    			
+	    	    		request.setAttribute("login",login);
+	    	    		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
+	    			    dispatcher.forward(request, response);
+	    			}
+	    			else{
+	    				ResultSet rs1 = dao.executeSQL("SELECT password FROM users WHERE username = '" + login.getUser() + "' AND password = '" + login.getPass() + "'");
+		    			if(!rs1.next())
+		    			{
+		    				System.out.println("Incorrect password");
+		    				login.setErrorP(1);
+		    				
+		    	    		request.setAttribute("login",login);
+		    	    		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
+		    			    dispatcher.forward(request, response);
+		    			}
+		    			else{
+		    				HttpSession session = request.getSession();
+		    		    	session.setAttribute("user",login.getUser());
+		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
+		    			    dispatcher.forward(request, response);
+		    			}
+	    			}
+	    			
+	    		dao.disconnectBD();
+	    		}
+	    		catch(Exception e){
+	    			System.out.println("EXCEPTION: LoginController when DAO.");
+	    		}
 			    
 		    } 
 			else {

@@ -9,4 +9,6 @@ $(document).ready(function() {
 </script>
 
 
-<p id="nav"> Logout done! </p>
+Logout done!
+
+<li><a class="menu" id="MainController" href="MainController"> Back </a></li>
