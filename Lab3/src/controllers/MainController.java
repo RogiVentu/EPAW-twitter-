@@ -30,15 +30,17 @@ public class MainController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-HttpSession session = request.getSession();
+		HttpSession session = request.getSession();
 		
 		if (session.getAttribute("user")!=null) {
 		
+			session.setAttribute("user",session.getAttribute("user"));
 			System.out.println("MenuController, loading: ViewMenuLogged ");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMenuLogged.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
 			dispatcher.forward(request, response);
 		}

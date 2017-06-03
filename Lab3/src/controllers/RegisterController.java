@@ -36,7 +36,7 @@ public class RegisterController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	   System.out.println("RegisterController. ASDFASDF");
+	   System.out.println("RegisterController.");
 	   BeanUser user = new BeanUser();
 		
 	   try {
@@ -58,6 +58,7 @@ public class RegisterController extends HttpServlet {
 						request.setAttribute("user",user);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
 						dispatcher.forward(request, response);
+						return;
 					}
 					
 					ResultSet rs1 = dao.executeSQL("SELECT email FROM users WHERE email = '" +user.getMail()+"'");
@@ -71,6 +72,7 @@ public class RegisterController extends HttpServlet {
 						request.setAttribute("user",user);
 						RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
 						dispatcher.forward(request, response);
+						return;
 					}
 
 					dao.insertUserSQL(user);
@@ -79,7 +81,7 @@ public class RegisterController extends HttpServlet {
 					if(dao.getStatus() > 0)
 						System.out.println("You have been registred!");
 
-					RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
+					RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 					dispatcher.forward(request, response);
 					
 					dao.disconnectBD();

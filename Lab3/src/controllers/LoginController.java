@@ -45,7 +45,7 @@ public class LoginController extends HttpServlet {
 	    	BeanUtils.populate(login, request.getParameterMap());
 	    	
 	    	if (login.isComplete()) {
-	    		
+
 	    		try{
 	    			DAO dao = new DAO();
 	    			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" + login.getUser() + "'");
@@ -70,9 +70,10 @@ public class LoginController extends HttpServlet {
 		    			    dispatcher.forward(request, response);
 		    			}
 		    			else{
+		    				System.out.println("WHYY");
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
-		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
+		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}
 	    			}

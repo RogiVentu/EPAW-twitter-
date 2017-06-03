@@ -1,6 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="models.BeanUser"%>
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,8 +49,6 @@
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/additional-methods.min.js"></script>
 
 
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="css/register_style.css">
 <!-- --------------------------------------------------------------------------------------------------------- -->
 <!-- --------------------------------------------------------------------------------------------------------- -->
 
@@ -85,11 +86,17 @@
 					date_input.datepicker(options);
 				})
 	</script>
-	
 
-	<jsp:include page="ViewMenuNotLogged.jsp" />
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goLogin").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
 
-	
 	<div id="formular">
 
 		<%
@@ -102,38 +109,28 @@
 		%>
 
 		<form action="/Lab3/RegisterController" method="post"
-			id="registerForm" onsubmit="return validacion()">
+			id="registerForm">
 			<fieldset>
 				<div class="form-group">
-					<label> Username </label>
-					<div class="input-group">
-						<input type="text" name="user" id="user" class="form-control"
-							value="${user.user}" />
-					</div>
-					<%
-						if (user.getError()[0] == 1) {
-							out.println("The username already exists in our DB!");
-						}
-					%>
+					<label> Username </label> <input type="text" name="user" id="user"
+						class="form-control" value="${user.user}" />
+					<c:if test="${user.error[0] == 1}">
+						<span class="error">Username already exists</span>
+					</c:if>
 				</div>
 
 				<div class="form-group">
 					<label> E-mail (Required, valid e-mail adress) </label> <input
 						type="email" name="mail" class="form-control" id="mail"
 						value="${user.mail}" />
-					<%
-						if (user.getError()[1] == 1) {
-							out.println("This email already exists in our DB!");
-						}
-					%>
+					<c:if test="${user.error[1] == 1}">
+						<span class="error">Email already exists</span>
+					</c:if>
 				</div>
 
 				<div class="form-group">
-					<label> Password </label>
-					<div class="input-group">
-						<input type="password" name="pass" class="form-control" id="pass"
-							value="${user.pass}" />
-					</div>
+					<label> Password </label> <input type="password" name="pass"
+						class="form-control" id="pass" value="${user.pass}" />
 				</div>
 
 				<div class="form-group">
@@ -157,24 +154,27 @@
 				</div>
 
 				<div class="form-inline">
-					<label> Gender :	</label> <label> Male </label> <input type="radio"
+					<label> Gender : </label> <label> Male </label> <input type="radio"
 						id="r1" name="gender" value="Male"> <label> Female</label>
 					<input type="radio" id="r2" name="gender" value="Female"> <label>
 						Other </label> <input type="radio" id="r3" name="gender" value="Other">
 				</div>
 
 				<div class="form-group">
-					<label>Datebirth</label>
-					<div class="input-group date">
-						<input class="form-control" id="datebirth" name="datebirth"
-							placeholder="DD/MM/YYYY" type="text" value="${user.datebirth}"
-							required onchange="hasDateFormat();" maxlength="10">
-					</div>
+					<label>Datebirth</label> <input class="form-control" id="datebirth"
+						name="datebirth" placeholder="DD/MM/YYYY" type="text"
+						value="${user.datebirth}" required onchange="hasDateFormat();"
+						maxlength="10">
 				</div>
 
-				<input name="sumbit" type="submit" class="btn" value="Enviar">
+				<input class="button button_submit_register" name="sumbit"
+					type="submit" class="btn" value="Enviar">
 			</fieldset>
 		</form>
 	</div>
+	<a href=# id="LoginController"
+		class="goLogin button button_primary_register">Login</a>
+	<br>
+	<a href="#" class="button_anonymus_register">Go as anonymus</a>
 </body>
 </html>

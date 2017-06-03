@@ -1,65 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" session="false" %>
+	pageEncoding="UTF-8" session="false"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title> Lab 3 template </title>
+<title>Lab 3 template</title>
 <link rel="stylesheet" type="text/css" href="css/structure.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"> </script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
 </head>
 <body>
 
-   <!-- Begin Wrapper -->
-   <div id="wrapper">
-   
-         <!-- Begin Header -->
-         <!--<div id="header">
-		 
-		       This is the Header		 
-			   
-		 </div>-->
-		 <!-- End Header -->
-		 
-		 <!-- Begin Navigation -->
-         <div id="navigation">
-		 		<jsp:include page="ViewMenuNotLogged.jsp" />			   
-		 </div>
-		 <!-- End Navigation -->
-		 
-         <!-- Begin Faux Columns -->
-		 <div id="faux">
-		 
-		       <!-- Begin Left Column -->
-		      <!--   <div id="leftcolumn"> </div>-->
-		       <!-- End Left Column -->
-		 
-		       <!-- Begin Content Column -->
-		       <div id="content">
-		       
-		       <jsp:include page="ViewLoginForm.jsp" />
-	  		       			  
-		       </div>
-		       <!-- End Content Column -->
-			   
-			   <!-- Begin Right Column -->
-		       <!-- <div id="rightcolumn"> </div> -->
-		       <!-- End Right Column -->
+	<img class="imglogo" src="css/images/logoinv.png">
+	<img class="imgtitle" src="css/images/title.png">
+	<div id="content">
+	
+	
+			<jsp:include page="ViewLoginForm.jsp" />
+	
 
-         </div>	   
-         <!-- End Faux Columns --> 
+	</div>
 
-         <!-- Begin Footer -->
-         <div id="footer">
-		       
-               <p id=footext>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>		
+	<!-- Begin Footer -->
+	<div id="footer">
 
-         </div>
-		 <!-- End Footer -->
-		 
-   </div>
-   <!-- End Wrapper -->
+		<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger
+			Ventura</p>
+
+	</div>
+	<!-- End Footer -->
+
+
 </body>
 </html>

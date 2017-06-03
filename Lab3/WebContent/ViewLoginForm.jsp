@@ -30,10 +30,12 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<!-- CSS -->
-<link rel="stylesheet" type="text/css" href="css/register_style.css">
+
+
 
 </head>
+
+
 <body>
 
 <script>
@@ -49,6 +51,14 @@
 			});
 </script>
 
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".goSignUp").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+});
+</script>
+
 	<%
 			BeanLogin login = null;
 			if (request.getAttribute("login") != null) {
@@ -62,27 +72,25 @@
 		<fieldset>
 			<div class="form-group">
 				<label> Username </label>
-				<div class="input-group">
 					<input type="text" name="user" id="user" class="form-control"
 						value="${login.user}" />
-				</div>
 				<c:if test="${login.error[0] == 1}">
 					<span class="error">Nonexistent username in our DB!</span>
 				</c:if>
 			</div>
 
 			<div class="form-group">
-				<label> Password </label>
-				<div class="input-group">
+				<label > Password </label>
 					<input type="password" name="pass" class="form-control" id="pass"
 						value="${login.pass}" />
-				</div>
 				<c:if test="${login.error[1] == 1}">
 					<span class="error">Incorrect password!</span>
 				</c:if>
 			</div>
 
-			<input name="sumbit" type="submit" value="Enviar">
+			<input class="button button_submit_login" name="sumbit" type="submit" value="Submit">
 		</fieldset>
 	</form>
+	<a href=# id="RegisterController"class="goSignUp button button_primary_login">Sign Up</a><br>
+	<a href="#" class="button_anonymus_login">Go as anonymus</a>
 </body>
