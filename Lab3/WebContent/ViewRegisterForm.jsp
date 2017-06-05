@@ -172,7 +172,7 @@
 			</fieldset>
 		</form>
 	</div>
-	<a href=# id="LoginController"
+	<a id="LoginController"
 		class="goLogin button button_primary_register">Login</a>
 	<br>
 	<a href="#" class="button_anonymus_register">Go as anonymus</a>

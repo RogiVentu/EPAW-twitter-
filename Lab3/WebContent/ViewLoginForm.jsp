@@ -59,6 +59,15 @@ $(document).ready(function() {
 });
 </script>
 
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    $(".goAsAnon").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+});
+</script>
 	<%
 			BeanLogin login = null;
 			if (request.getAttribute("login") != null) {
@@ -92,5 +101,5 @@ $(document).ready(function() {
 		</fieldset>
 	</form>
 	<a href=# id="RegisterController"class="goSignUp button button_primary_login">Sign Up</a><br>
-	<a href="#" class="button_anonymus_login">Go as anonymus</a>
+	<a  href=# id="AnonymusController"class="goAsAnon button_anonymus_login">Go as anonymus</a>
 </body>

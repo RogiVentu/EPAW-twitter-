@@ -3,7 +3,7 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $(".menu").click(function(event) {
+    $(".mlog").click(function(event) {
         $('#content').load('ContentController',{content: $(this).attr('id')});
         });
 });
@@ -16,12 +16,12 @@ $(document).ready(function() {
 
 <div id="nav_wrapper">
 	<ul>
-		<li><a  class="menu" id="" href=""> Init </a></li>
-		<li><a  class="menu" id="" href=""> Your tweets </a></li>
-		<li><a  class="menu" id="" href=""> Profile </a></li>
-		<li><a  class="menu" id="" href=""> Next Events </a></li>
-		<li><a  class="menu" id="" href=""> About us </a></li>
-		<li><a class="menu" id="LogoutController" href="LogoutController"> Logout </a></li>
+		<li><a   id="" href=""> Init </a></li>
+		<li><a   id="" href=""> Your tweets </a></li>
+		<li><a   id="" href=""> Profile </a></li>
+		<li><a   id="" href=""> Next Events </a></li>
+		<li><a   id="" href=""> About us </a></li>
+		<li><a   class="mlog" id="LogoutController" > Logout </a></li>
 	</ul>
 </div>
 	

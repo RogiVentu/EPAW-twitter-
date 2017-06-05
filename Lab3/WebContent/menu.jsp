@@ -5,23 +5,29 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+
+
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".menu").click(function(event) {
-        $('html').load('ContentController',{content: $(this).attr('id')});
-        });
-});
-</script>
+
 
 <link rel="stylesheet" type="text/css" href="css/structure.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	
+<!-- <script type="text/javascript">
+$(document).ready(function() {
+    $(".mlog").click(function(event) {
+        $('#nav').load('ContentController',{content: $(this).attr('id')});
+        });
+});
+</script> -->
+
 </head>
 
 <body>
@@ -40,7 +46,7 @@ $(document).ready(function() {
 				<li><a href="#">Next Shows</a></li>
 				<li><a href="#">About Us</a></li>
 				<li><a href="#">Logged as ${user}</a></li>
-				<li><a href=# class="menu" id="LogoutController">Logout</a></li>
+				<li><a href="LogoutController" class="mlog" id="LogoutController">Logout</a></li>
 			</ul>
 		</div>
 	</div>

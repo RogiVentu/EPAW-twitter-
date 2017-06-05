@@ -70,10 +70,12 @@ public class LoginController extends HttpServlet {
 		    			    dispatcher.forward(request, response);
 		    			}
 		    			else{
-		    				System.out.println("WHYY");
+		    				System.out.println("WHYYas");
+		    				
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
-		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+		    		    	
+		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}
 	    			}

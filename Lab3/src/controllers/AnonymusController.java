@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LogoutController
+ * Servlet implementation class AnonymusController
  */
-@WebServlet("/LogoutController")
-public class LogoutController extends HttpServlet {
+@WebServlet("/AnonymusController")
+public class AnonymusController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutController() {
+    public AnonymusController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,11 +30,11 @@ public class LogoutController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		HttpSession session = request.getSession(false);
-		if (session!=null) session.invalidate();
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
-	    if (dispatcher != null) dispatcher.forward(request, response);
+		HttpSession session = request.getSession();
+		double i = 1000 - Math.random() * 1000;
+    	session.setAttribute("user","Guest" + i);
+    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
+	    dispatcher.forward(request, response);
 	}
 
 	/**

@@ -19,11 +19,7 @@
 	<img class="imglogo" src="css/images/logoinv.png">
 	<img class="imgtitle" src="css/images/title.png">
 	<div id="content">
-	
-	
 			<jsp:include page="ViewLoginForm.jsp" />
-	
-
 	</div>
 
 	<!-- Begin Footer -->
