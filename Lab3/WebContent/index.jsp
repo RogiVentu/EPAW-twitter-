@@ -16,17 +16,17 @@
 </head>
 <body>
 
-	<img class="imglogo" src="css/images/logoinv.png">
-	<img class="imgtitle" src="css/images/title.png">
+	<div id="navigation">
+		<jsp:include page="ViewMenuNotLogged.jsp"/>
+	</div>
 	<div id="content">
-			<jsp:include page="ViewLoginForm.jsp" />
+		<jsp:include page="ViewLoginForm.jsp" />
 	</div>
 
 	<!-- Begin Footer -->
 	<div id="footer">
 
-		<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger
-			Ventura</p>
+		<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>
 
 	</div>
 	<!-- End Footer -->

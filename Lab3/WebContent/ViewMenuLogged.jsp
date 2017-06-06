@@ -4,27 +4,25 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $(".mlog").click(function(event) {
-        $('#content').load('ContentController',{content: $(this).attr('id')});
+        $('#navigation').load('ContentController',{content: $(this).attr('id')});
         });
 });
 </script>
 
-<head>
-<link rel="stylesheet" type="text/css" href="css/structure.css" />
-</head>
-<body>
 
-<div id="nav_wrapper">
-	<ul>
-		<li><a   id="" href=""> Init </a></li>
-		<li><a   id="" href=""> Your tweets </a></li>
-		<li><a   id="" href=""> Profile </a></li>
-		<li><a   id="" href=""> Next Events </a></li>
-		<li><a   id="" href=""> About us </a></li>
-		<li><a   class="mlog" id="LogoutController" > Logout </a></li>
-	</ul>
-</div>
-	
-	<p style="color: #ffffff"> You are logged as ${user}, there is the menu logged </p>
-
-</body>
+	<div id="nav">
+		<br>
+		<div id="nav_wrapper">
+			<br> <br> <img class="imglogomenu"
+				src="css/images/logoinv.png">
+			<ul>
+				<li><a href="#">Main Page</a></li>
+				<li><a href="#">Your Tweets</a></li>
+				<li><a href="#">New Songs</a></li>
+				<li><a href="#">Next Shows</a></li>
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Logged as ${user}</a></li>
+				<li><a href="LogoutController" class="mlog" id="LogoutController">Logout</a></li>
+			</ul>
+		</div>
+	</div>

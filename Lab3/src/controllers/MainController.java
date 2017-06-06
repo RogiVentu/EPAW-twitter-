@@ -35,8 +35,8 @@ public class MainController extends HttpServlet {
 		if (session.getAttribute("user")!=null) {
 		
 			session.setAttribute("user",session.getAttribute("user"));
-			System.out.println("MenuController, loading: ViewMenuLogged ");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("menu.jsp");
+			System.out.println("MainController, loading: ViewMenuLogged ");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMenuLogged.jsp");
 			dispatcher.forward(request, response);
 		}
 		else {

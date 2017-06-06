@@ -97,6 +97,16 @@
 		});
 	</script>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goAsAnon").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
+
 	<div id="formular">
 
 		<%
@@ -108,8 +118,7 @@
 			}
 		%>
 
-		<form action="/Lab3/RegisterController" method="post"
-			id="registerForm">
+		<form action="/Lab3/RegisterController" id="registerForm" method="post">
 			<fieldset>
 				<div class="form-group">
 					<label> Username </label> <input type="text" name="user" id="user"
@@ -168,13 +177,14 @@
 				</div>
 
 				<input class="button button_submit_register" name="sumbit"
-					type="submit" class="btn" value="Enviar">
+					type="submit" value="Enviar">
 			</fieldset>
 		</form>
 	</div>
-	<a id="LoginController"
+	<a id="LoginController" href=#
 		class="goLogin button button_primary_register">Login</a>
 	<br>
-	<a href="#" class="button_anonymus_register">Go as anonymus</a>
+	<a href=# id="AnonymusController"
+		class="goAsAnon button_anonymus_register">Go as anonymus</a>
 </body>
 </html>
