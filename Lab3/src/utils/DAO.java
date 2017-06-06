@@ -40,7 +40,7 @@ public class DAO {
 	}
 	public void insertUserSQL(BeanUser user) throws SQLException{
 		
-		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?);");
+		ps = connection.prepareStatement("insert into users values(?,?,?,?,?,?,?,?);");
 		ps.setString(1, user.getUser());
 		ps.setString(2, user.getPass());
 		ps.setString(3, user.getMail());
@@ -48,6 +48,7 @@ public class DAO {
 		ps.setString(5, user.getSurnames());
 		ps.setString(6, user.getGender());
 		ps.setString(7, user.getDatebirth());
+		ps.setInt(8, user.getIsAdmin());
 		
 		status = ps.executeUpdate();;
 		

@@ -16,6 +16,7 @@ public class BeanUser implements Serializable  {
 	private String pass = "";
 	private String passconf = "";
 	private String mail = "";
+	private int isAdmin = 0;
 	
 	/*  Control which parameters have been correctly filled */
 	private int[] error = {0,0}; 
@@ -55,6 +56,10 @@ public class BeanUser implements Serializable  {
 	
 	public int[] getError() {
 		return error;
+	}
+	
+	public int getIsAdmin(){
+		return isAdmin;
 	}
 	
 	/*Setters*/
