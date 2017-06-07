@@ -118,7 +118,7 @@
 			}
 		%>
 
-		<form action="/Lab3/RegisterController" id="registerForm" method="post">
+		<form id="registerForm" method="post">
 			<fieldset>
 				<div class="form-group">
 					<label> Username </label> <input type="text" name="user" id="user"

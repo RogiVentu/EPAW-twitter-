@@ -4,7 +4,15 @@
 $(document).ready(function() {
 	    $.ajaxSetup({ cache: false }); // Avoids Internet Explorer caching!
 	    $('#navigation').load('MenuController');
+	    
+	    document.body.style.background = "#DCDCDC";
 });
+</script>
+
+<script>
+function myFunction() {
+    document.body.style.background = "#f3f3f3 url('images/tupac_bck.jpg') no-repeat";
+}
 </script>
 
 

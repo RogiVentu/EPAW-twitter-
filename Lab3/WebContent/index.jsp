@@ -8,15 +8,27 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Lab 3 template</title>
+
 <link rel="stylesheet" type="text/css" href="css/structure.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
+	
+<script>
+function myFunction() {
+    document.body.style.background = "#f3f3f3 url('images/tupac_bck.jpg') no-repeat";
+}
+</script>
+
 </head>
+
 <body>
+	
+	
 
 	<div id="navigation">
+		
 		<jsp:include page="ViewMenuNotLogged.jsp"/>
 	</div>
 	<div id="content">
@@ -26,7 +38,8 @@
 	<!-- Begin Footer -->
 	<div id="footer">
 
-		<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>
+		<jsp:include page="footer.jsp"/>
+		<!--<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>-->
 
 	</div>
 	<!-- End Footer -->
