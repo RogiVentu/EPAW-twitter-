@@ -16,6 +16,13 @@ label{
 	color:white;
 }
 
+.h1, h1{
+	color: white;
+	font: 40px "Arial", sans-serif;
+	font-size:40px;
+	text-align: center;
+}
+
 .imglogo{
 	width: 150px;
 	height:150px;

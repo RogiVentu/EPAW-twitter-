@@ -15,11 +15,7 @@
 <script
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
 	
-<script>
-function myFunction() {
-    document.body.style.background = "#f3f3f3 url('images/tupac_bck.jpg') no-repeat";
-}
-</script>
+
 
 </head>
 

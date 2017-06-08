@@ -5,10 +5,12 @@
 $(document).ready(function() {
 	    $.ajaxSetup({ cache: false }); //Avoids Internet Explorer caching!
         $('#navigation').load('MenuController');   
+	    
+        
 });
 </script>
 
 
-Logout done!
+<p style="color: black">Logout DONE !!!</p>
 
 <li><a class="menu" id="MainController" href="MainController"> Back </a></li>

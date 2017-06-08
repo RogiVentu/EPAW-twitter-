@@ -10,11 +10,9 @@ $(document).ready(function() {
 </script>
 
 <script>
-function myFunction() {
-    document.body.style.background = "#f3f3f3 url('images/tupac_bck.jpg') no-repeat";
-}
+
 </script>
 
 
 
-<p style="color: #ffffff">Login for user ${user} done!</p>
+<p style="color: black">Login for user ${user} done!</p>

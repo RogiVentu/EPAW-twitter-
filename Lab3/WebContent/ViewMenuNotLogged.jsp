@@ -13,5 +13,4 @@
 
 
 
-<img class="imglogo" src="css/images/logoinv.png">
-<img class="imgtitle" src="css/images/title.png">
+<h1>ARTeest</h1>

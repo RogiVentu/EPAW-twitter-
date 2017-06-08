@@ -31,8 +31,8 @@ public class AnonymusController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		double i = 1000 - Math.random() * 1000;
-    	session.setAttribute("user","Guest" + i);
+		int i = 1000 - (int)(Math.random() * 1000);
+    	session.setAttribute("user","Guest " + i);
     	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 	    dispatcher.forward(request, response);
 	}
