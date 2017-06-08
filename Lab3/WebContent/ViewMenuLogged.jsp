@@ -16,7 +16,7 @@ $(document).ready(function() {
 			<br> <br> <img class="imglogomenu"
 				src="css/images/logoinv.png">
 			<ul>
-				<li><a href="#"> "Main Page</a></li>
+				<li><a href="#">Main Page</a></li>
 				<li><a href="#">Your Tweets</a></li>
 				<li><a href="#">New Songs</a></li>
 				<li><a href="#">Next Shows</a></li>
