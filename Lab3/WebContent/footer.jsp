@@ -60,7 +60,7 @@
 </div>
 
 <div class="footer-right">
-
+	<br>
 	<p class="footer-company-about">
 		<span>About the company</span> We are a big company and our artist
 		know it, they are so happy with this social network!

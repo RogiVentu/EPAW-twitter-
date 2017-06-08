@@ -13,4 +13,4 @@
 
 
 
-<h1>ARTeest</h1>
+<h1 class="tit">artweest</h1>

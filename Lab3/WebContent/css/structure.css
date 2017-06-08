@@ -16,10 +16,17 @@ label{
 	color:white;
 }
 
-.h1, h1{
+@font-face{
+	font-family: omnespro;
+	src:url(fonts/omnes-regular-webfont.ttf);
+}
+
+.tit{
 	color: white;
-	font: 40px "Arial", sans-serif;
-	font-size:40px;
+	font-family:omnespro, sans-serif;
+	font-size: 100px;
+	position: relative;
+	top: 50px;
 	text-align: center;
 }
 
