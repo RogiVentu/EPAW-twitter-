@@ -3,6 +3,8 @@ package controllers;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -40,7 +42,7 @@ public class LoginController extends HttpServlet {
 
 		System.out.println("LoginController.");
 		BeanLogin login = new BeanLogin();
-		
+		List<BeanTweet> ltweets= new ArrayList<BeanTweet>();
 	    try {
 			
 	    	BeanUtils.populate(login, request.getParameterMap());
@@ -77,6 +79,17 @@ public class LoginController extends HttpServlet {
 		    		    	session.setAttribute("user",login.getUser());
 		    		    	ResultSet rst = dao.executeSQL("SELECT title, text FROM tweets WHERE user = '" + login.getUser() + "'");
 		    		    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
+		    		    	int ts = 0;
+		    		    	
+		    		    	while(rst.next()){
+		    		    		BeanTweet nt = new BeanTweet();
+		    		    		nt.setTitle(rst.getString("title"));
+		    		    		nt.setText(rst.getString("text"));
+		    		    		//ltweets.add(nt);
+		    		    		
+		    		    		session.setAttribute("title", nt.getTitle());
+		    		    		session.setAttribute("text" , nt.getText());
+		    		    	}
 		    		    	//en for para todos: 
 		    		    		//session.setAttribute("title", (LO Q VENDRIA A SER EL TITLE));
 		    		    		//session.setAttribute("text", (LO QUE VENDRIA A SER EL TEXTO));
