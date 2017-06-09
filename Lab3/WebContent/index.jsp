@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8" session="false"%>
+	pageEncoding="UTF-8" session="true"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
@@ -14,27 +14,36 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js"></script>
-	
+
 
 
 </head>
 
 <body>
-	
-	
+
+
 
 	<div id="navigation">
-		
-		<jsp:include page="ViewMenuNotLogged.jsp"/>
+		<c:if test="${user != NULL}">
+			<jsp:include page="ViewMenuLogged.jsp" />
+		</c:if>
+		<c:if test="${user == NULL}">
+			<jsp:include page="ViewMenuNotLogged.jsp" />
+		</c:if>
 	</div>
 	<div id="content">
-		<jsp:include page="ViewLoginForm.jsp" />
+				<c:if test="${user != NULL}">
+			<jsp:include page="ViewLoginDone.jsp" />
+		</c:if>
+		<c:if test="${user == NULL}">
+			<jsp:include page="ViewLoginForm.jsp" />
+		</c:if>
 	</div>
 
 	<!-- Begin Footer -->
 	<div id="footer">
 
-		<jsp:include page="footer.jsp"/>
+		<jsp:include page="footer.jsp" />
 		<!--<p>Web Page made by: Alexis Ruiz, Jaume Pons, Roger Ventura</p>-->
 
 	</div>

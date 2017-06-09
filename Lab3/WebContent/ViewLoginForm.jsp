@@ -101,5 +101,5 @@ $(document).ready(function() {
 		</fieldset>
 	</form>
 	<a href=# id="RegisterController"class="goSignUp button button_primary_login">Sign Up</a><br>
-	<a  href=# id="AnonymusController"class="goAsAnon button_anonymus_login">Go as anonymus</a>
+	<a  href=# id="AnonymusController"class="goAsAnon button_anonymus">Go as anonymus</a>
 </body>

@@ -11,8 +11,16 @@ $(document).ready(function() {
 
 <script>
 
+setTimeout(function(){
+	$('#log_done').hide();
+	$('#show_tweets').show()
+	}, 2000);
+
+
 </script>
 
 
 
-<p style="color: black">Login for user ${user} done!</p>
+<p id="log_done" style="color: black">Login for user ${user} done!</p>
+
+

@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.BeanUtils;
 
 import models.BeanLogin;
+import models.BeanTweet;
 import utils.DAO;
 
 /**
@@ -74,7 +75,11 @@ public class LoginController extends HttpServlet {
 		    				
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
-		    		    	
+		    		    	ResultSet rst = dao.executeSQL("SELECT title, text FROM tweets WHERE user = '" + login.getUser() + "'");
+		    		    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
+		    		    	//en for para todos: 
+		    		    		//session.setAttribute("title", (LO Q VENDRIA A SER EL TITLE));
+		    		    		//session.setAttribute("text", (LO QUE VENDRIA A SER EL TEXTO));
 		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}

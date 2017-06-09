@@ -56,7 +56,6 @@
 <body>
 	<!-- FUNCTIONS -->
 
-	<script type="text/javascript" src="Restrictions.js"></script>
 
 	<script>
 		$(document).ready(
@@ -185,6 +184,6 @@
 		class="goLogin button button_primary_register">Login</a>
 	<br>
 	<a href=# id="AnonymusController"
-		class="goAsAnon button_anonymus_register">Go as anonymus</a>
+		class="goAsAnon button_anonymus">Go as anonymus</a>
 </body>
 </html>
