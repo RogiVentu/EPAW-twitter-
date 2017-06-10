@@ -127,8 +127,16 @@ label{
 	align-items: center;
 	top: 75px;
 	margin-bottom: 10%;
-	margin-left: 40%;
-	margin-right: 40%;
+	margin-left: 25%;
+	margin-right: 25%;
+	position:relative;
+}
+
+#contnotlog{
+	align-items: center;
+	margin-bottom: 10%;
+	margin-left: 30%;
+	margin-right: 30%;
 	position:relative;
 }
 .imglogomenu{

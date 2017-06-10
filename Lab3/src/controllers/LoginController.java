@@ -77,22 +77,27 @@ public class LoginController extends HttpServlet {
 		    				
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
-		    		    	ResultSet rst = dao.executeSQL("SELECT title, text FROM tweets WHERE user = '" + login.getUser() + "'");
+		    		    	ResultSet rst = dao.executeSQL("SELECT * FROM tweets WHERE user = '" + login.getUser() + "'");
 		    		    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
-		    		    	int ts = 0;
+		    		    	int i = 0;
 		    		    	
 		    		    	while(rst.next()){
 		    		    		BeanTweet nt = new BeanTweet();
 		    		    		nt.setTitle(rst.getString("title"));
 		    		    		nt.setText(rst.getString("text"));
-		    		    		//ltweets.add(nt);
+		    		    		nt.setUser(rst.getString("user"));
+		    		    		nt.setTime(rst.getString("time"));
 		    		    		
-		    		    		session.setAttribute("title", nt.getTitle());
-		    		    		session.setAttribute("text" , nt.getText());
+		    		    		//nt.setPicture(rst.getString("picture"));
+
+		    		    		System.out.println("papito coleasdawd");
+		    		    		session.setAttribute("title" + i, nt.getTitle());
+		    		    		session.setAttribute("text" + i, nt.getText());
+		    		    		session.setAttribute("usertweet" + i, nt.getUser());
+		    		    		session.setAttribute("time" + i , nt.getTime());
+		    		    		i++;
+		    		    		System.out.println("SHUUURS AQUI LLEGA");
 		    		    	}
-		    		    	//en for para todos: 
-		    		    		//session.setAttribute("title", (LO Q VENDRIA A SER EL TITLE));
-		    		    		//session.setAttribute("text", (LO QUE VENDRIA A SER EL TEXTO));
 		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}

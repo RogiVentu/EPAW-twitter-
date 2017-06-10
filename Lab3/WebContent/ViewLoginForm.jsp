@@ -76,7 +76,7 @@ $(document).ready(function() {
 				login = new BeanLogin();
 			}
 		%>
-		
+	<div id="contnotlog">
 	<form  action="/Lab3/LoginController" id="loginForm" method="post">
 		<fieldset>
 			<div class="form-group">
@@ -102,4 +102,5 @@ $(document).ready(function() {
 	</form>
 	<a href=# id="RegisterController"class="goSignUp button button_primary_login">Sign Up</a><br>
 	<a  href=# id="AnonymusController"class="goAsAnon button_anonymus">Go as anonymus</a>
+	</div>
 </body>

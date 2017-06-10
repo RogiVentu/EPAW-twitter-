@@ -32,7 +32,7 @@
 		</c:if>
 	</div>
 	<div id="content">
-				<c:if test="${user != NULL}">
+		<c:if test="${user != NULL}">
 			<jsp:include page="ViewLoginDone.jsp" />
 		</c:if>
 		<c:if test="${user == NULL}">
