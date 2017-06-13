@@ -20,7 +20,7 @@
 	}, 2000);
 </script>
 
-<script type="text/javascript">
+<!--<script type="text/javascript">
 	var text = "";
 	var i;
 	for(i=0; i<10 ; i++){
@@ -28,7 +28,7 @@
 	}
 	
 	document.getElementById("showtw").innerHTML = text;
-</script>
+</script>-->
 
 
 
@@ -37,4 +37,5 @@
 <div id="show_tweets">
 	<p id="showtw"><b><u>${title0}</u></b> - at ${time0}<br><br>${text0}<br><br>By: ${usertweet0}</p><br><br><br>
 	<p id="showtw"><b><u>${title1}</u></b> - at ${time1}<br><br>${text1}<br><br>By: ${usertweet1}</p><br><br><br>
+	<!-- <p id="showtw"></p>-->
 </div>
