@@ -46,7 +46,24 @@ label{
 	left: 400px;
 	top:75px;
 	position:relative;
+
 	
+}
+
+.search {
+	width: 200px;
+	padding: 8px;
+	border: 1px solid rgb(50,50,50);
+}
+.submitsearch {
+	padding: 8px;
+	background: rgb(100,100,100);
+	border: 1px solid rgb(50,50,50);
+	color: white;
+	margin-left: -5px;
+}
+.submitsearch:hover{
+	background: rgb(150,150,150);
 }
 .button{
 	display:inline-block;

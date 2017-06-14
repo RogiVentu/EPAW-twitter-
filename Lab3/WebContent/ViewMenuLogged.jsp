@@ -3,7 +3,23 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $(".mlog").click(function(event) {
+    $(".logpage").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+    
+    $(".profpage").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+    
+    $(".perspage").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+    
+    $(".mainpage").click(function(event) {
+        $('#content').load('ContentController',{content: $(this).attr('id')});
+        });
+    
+    $(".searchb").click(function(event) {
         $('#content').load('ContentController',{content: $(this).attr('id')});
         });
 });
@@ -16,12 +32,12 @@ $(document).ready(function() {
 			<br> <br> <img class="imglogomenu"
 				src="css/images/logoinv.png">
 			<ul>
-				<li><a href="#">Main Page</a></li>
-				<li><a href="#">Your Tweets</a></li>
-				<li><a href="#">New Songs</a></li>
-				<li><a href="#">Next Shows</a></li>
-				<li><a href="#">Logged as ${user}</a></li>
-				<li><a href=# class="mlog" id="LogoutController">Logout</a></li>
+				<li><a href=# class="mainpage" id="MainTweetsController">Main Page</a></li>
+				<li><a href=# class="perspage" id="TweetsController">Personal Page</a></li>
+				<li><a href=# class="searchb" id="ViewSearch.jsp">Search</a></li>
+				<li><a href="#">BLABLA</a></li>
+				<li><a href=# class="profpage" id="ProfileController">${user} (profile page)</a></li>
+				<li><a href=# class="logpage" id="LogoutController">Logout</a></li>
 			</ul>
 		</div>
 	</div>

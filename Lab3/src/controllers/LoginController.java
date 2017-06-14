@@ -42,7 +42,6 @@ public class LoginController extends HttpServlet {
 
 		System.out.println("LoginController.");
 		BeanLogin login = new BeanLogin();
-		List<BeanTweet> ltweets= new ArrayList<BeanTweet>();
 	    try {
 			
 	    	BeanUtils.populate(login, request.getParameterMap());
@@ -77,27 +76,7 @@ public class LoginController extends HttpServlet {
 		    				
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
-		    		    	ResultSet rst = dao.executeSQL("SELECT * FROM tweets WHERE user = '" + login.getUser() + "'");
-		    		    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
-		    		    	int i = 0;
 		    		    	
-		    		    	while(rst.next()){
-		    		    		BeanTweet nt = new BeanTweet();
-		    		    		nt.setTitle(rst.getString("title"));
-		    		    		nt.setText(rst.getString("text"));
-		    		    		nt.setUser(rst.getString("user"));
-		    		    		nt.setTime(rst.getString("time"));
-		    		    		
-		    		    		//nt.setPicture(rst.getString("picture"));
-
-		    		    		System.out.println("papito coleasdawd");
-		    		    		session.setAttribute("title" + i, nt.getTitle());
-		    		    		session.setAttribute("text" + i, nt.getText());
-		    		    		session.setAttribute("usertweet" + i, nt.getUser());
-		    		    		session.setAttribute("time" + i , nt.getTime());
-		    		    		i++;
-		    		    		System.out.println("SHUUURS AQUI LLEGA");
-		    		    	}
 		    		    	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}
