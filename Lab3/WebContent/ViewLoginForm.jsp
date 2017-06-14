@@ -76,7 +76,7 @@ $(document).ready(function() {
 				login = new BeanLogin();
 			}
 		%>
-	<div id="contnotlog">
+	<div id="contnotlog" class="logandreg">
 	<form  action="/Lab3/LoginController" id="loginForm" method="post">
 		<fieldset>
 			<div class="form-group">

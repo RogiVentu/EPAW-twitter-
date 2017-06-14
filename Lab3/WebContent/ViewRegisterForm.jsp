@@ -105,7 +105,7 @@
 			});
 		});
 	</script>
-	<div id="contnotlog">
+	<div id="contnotlog" class="logandreg">
 		<div id="formular">
 
 			<%

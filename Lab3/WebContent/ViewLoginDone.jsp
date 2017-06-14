@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" session="true" import="models.BeanUser"%>
+	
+	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <script type="text/javascript">
+
 
 	$(document).ready(function() {
 		$.ajaxSetup({
@@ -14,11 +19,11 @@
 
 <script>
 	setTimeout(function() {
-		$('#content').load('TweetsController')
+		$('#content').load('MainTweetsController')
 	}, 2000);
 </script>
 
-
+	
 
 <p id="log_done" style="color: black">Login for user ${user} done!</p>
 

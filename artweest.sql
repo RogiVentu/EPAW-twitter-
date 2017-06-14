@@ -38,7 +38,7 @@ CREATE TABLE `follows` (
 
 LOCK TABLES `follows` WRITE;
 /*!40000 ALTER TABLE `follows` DISABLE KEYS */;
-INSERT INTO `follows` VALUES ('Hancock','laieee');
+INSERT INTO `follows` VALUES ('Hancock','Danielle'),('Danielle','Durant'),('Hancock','Durant'),('laieee','Durant'),('Danielle','laieee'),('Hancock','laieee');
 /*!40000 ALTER TABLE `follows` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,7 +59,7 @@ CREATE TABLE `tweets` (
   PRIMARY KEY (`id`),
   KEY `user` (`user`),
   CONSTRAINT `tweets_ibfk_1` FOREIGN KEY (`user`) REFERENCES `users` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +68,7 @@ CREATE TABLE `tweets` (
 
 LOCK TABLES `tweets` WRITE;
 /*!40000 ALTER TABLE `tweets` DISABLE KEYS */;
-INSERT INTO `tweets` VALUES (1,'Visitando el museo de ciencia','AIII SI QUE BIEN ME LO PASE EN EL MUSEO DE CIENCIA HAY MUCHAS COSAS INTERESANTES COMO POR EJEMPLO COSAS HECHAS CON CIENCIA Y COSAS QUE SIN LA CIENCIA NO SE PODRIAN HABER HECHO','Hancock','2017-06-08 23:32:00',NULL),(2,'In the Lil Uzi Vert Performance','Amazing festival, that lil uzi vert is a boss i will repeat next year... it was an awesome experience!','Hancock','2017-06-10 14:23:65',NULL);
+INSERT INTO `tweets` VALUES (1,'Visitando el museo de ciencia','AIII SI QUE BIEN ME LO PASE EN EL MUSEO DE CIENCIA HAY MUCHAS COSAS INTERESANTES COMO POR EJEMPLO COSAS HECHAS CON CIENCIA Y COSAS QUE SIN LA CIENCIA NO SE PODRIAN HABER HECHO','Hancock','2017-06-08 23:32:00',NULL),(2,'In the Lil Uzi Vert Performance','Amazing festival, that lil uzi vert is a boss i will repeat next year... it was an awesome experience!','Hancock','2017-06-10 14:23:65',NULL),(3,'Cach Me Outside','Just come outside and catch me man u know u cant','Danielle','14-06-2017 17:34:00',NULL),(4,'I hate mondays','OH.. Today is monday... Please kill me mates','Danielle','13-06-2017 18:52:34',NULL),(5,'Restaurant Gourmet','El restaurant de la Garriga anomenat Jamelexirogi està molt bo, fan uns plats molt gourmets','laieee','14-06-2017 02:23:14',NULL),(6,'Comença l\'estiu, per fí!','Per fi he acabat els examens ara cap a la platja!','laieee','12-06-2017 11:23:14',NULL),(7,'I am the best','We deserve that win, and i deserve the mpv title in finals because i did it all, my team did zero work.','Durant','13-06-2017 09:23:14',NULL),(8,'I love you Lebron','Just right now i found Lebron James in one party, he is a good boy at all, i think i feel in love with him','Durant','15-06-2017 00:33:51',NULL),(9,'I can\'t resist this','Oh guys, im sorry i cant resist go to bed with Lebron, he is an amazing bro','Durant','15-06-2017 03:53:12',NULL);
 /*!40000 ALTER TABLE `tweets` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +98,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','admin','admin@admin','Admin','Admin Supremo','Male','15/11/1996',1),('AlexisBro59','qaqaqa','alexis@gmail.com','Alexis ','jAUME Alcala','Female','01/01/2017',0),('AVERSUFYBSUIB','okokok','okw@wekk','okokawd','aisdakd','Other','05/08/2017',0),('butanerosd','qaqaqa','buta@fkfkfdfg','asdasd','asdasdasdk','Other','06/11/2017',0),('efsdfsdf','sdfsdfsdf','sdsdfsdf@dsf','Roger','VENEGWEI','Female','wefwefwef',0),('Hancocdf','tadpole','asddee@dldldl','pepe','sikoasdfsf','Female','05/08/2017',0),('Hancock','1q2w3e4r','sksdk@sdsdf','Roger','Ventura Castelló','Male','05/01/2017',0),('Hancock343','123456','okok@dxdx','Alp','Oktem','Male','05/10/2017',0),('Hancockl','qaqaqa','okasd@2qwe','qaqaik','kijok','Female','06/06/2017',0),('ii  j jh jh jh j ','mkl mkl','oo@koko.o.o.o.o.o.o','na','okpppp','Other','02/08/2018',0),('keloopwwr','qoqoqo','okada@weewj','qowek','okoiikj','Male','06/13/2017',0),('keloruuush','shurma','epepe@dddad','peodp','dfspfqo','Male','06/07/2017',0),('laieee','okokok','laiee@asdkmsdf','Laiaaa','Castany','Female','06/05/2017',0),('PAPIITO','asdgoko','sdfs@sdf','kekleoke','dasdadad','Male','05/01/2017',0),('Purchass','purchass','dfps@sdfsf','mememakw','ldaldadad','Male','05/10/2017',0),('sdfsd','sdfsesf','fsef@sdf','sdfsf','sdfsdf','Male','05/15/2017',0),('sdsadfsdf','sdfsdf','sdf@sdf','sdf','dfsdf','Male','05/17/2017',0);
+INSERT INTO `users` VALUES ('admin','admin','admin@admin','Admin','Admin Supremo','Male','15/11/1996',1),('Danielle','okokok','cach@me','Cach ','Me Outside','Female','06/05/2017',0),('Durant','okokok','lentreno@bcn','Durant','Shaquile Iguain','Male','05/08/2017',0),('Hancock','1q2w3e4r','sksdk@sdsdf','Roger','Ventura Castelló','Male','05/01/2017',0),('laieee','okokok','laiee@asdkmsdf','Laiaaa','Castany','Female','06/05/2017',0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -111,4 +111,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-14 13:34:01
+-- Dump completed on 2017-06-14 19:34:43

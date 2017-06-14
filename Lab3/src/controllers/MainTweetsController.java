@@ -51,9 +51,17 @@ public class MainTweetsController extends HttpServlet {
 	    i++;
 		try {
 			DAO dao = new DAO();
+			
+			ResultSet rst;
 
-			ResultSet rst = dao.executeSQL("SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = '"
+			if(session.getAttribute("isGuest") != null){
+				System.out.println("ANOASODW");
+				rst = dao.executeSQL("SELECT * FROM tweets");
+			}
+			else{
+				rst = dao.executeSQL("SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = '"
 					+ session.getAttribute("user") + "' AND T.user = F.followed");
+			}
 			// recorrer el rst que contiene titulos y text de todos los tweets
 			// de el usuario y luego
 

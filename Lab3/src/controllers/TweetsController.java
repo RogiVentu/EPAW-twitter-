@@ -50,6 +50,7 @@ public class TweetsController extends HttpServlet {
 		try{
 			DAO dao = new DAO();
 			
+
 			
 			ResultSet rst = dao.executeSQL("SELECT * FROM tweets WHERE user = '" + session.getAttribute("user") + "'");
 	    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
