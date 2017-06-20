@@ -59,53 +59,22 @@ public class TweetsController extends HttpServlet {
 			BeanTweets bts = new BeanTweets();
 			List<BeanTweet> alltweets = null;
 			if(session.getAttribute("isGuest") != null){
-				System.out.println("isGuest = true");
+				//System.out.println("isGuest = true");
 				alltweets = bts.getTweets();
 				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
 				Collections.sort(alltweets, reverseOrderBeanComparator);
-				System.out.println(alltweets.size());
+				//System.out.println(alltweets.size());
 			}
 			else{
 				
 				alltweets = bts.getFollowedTweets(session.getAttribute("user").toString());
 				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
 				Collections.sort(alltweets, reverseOrderBeanComparator);
-				System.out.println(session.getAttribute("user").toString());
-				System.out.println(alltweets.size());
-				//				rst = dao.executeSQL("SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = '" + session.getAttribute("user") + "' AND T.user = F.followed");
+				//System.out.println(session.getAttribute("user").toString());
+				//System.out.println(alltweets.size());
 				
 			}
 			
-			
-			
-			
-	    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
-			
-	    	
-	    	/*while(rst.next()){
-	    		BeanTweet nt = new BeanTweet();
-	    		nt.setTitle(rst.getString("title"));
-	    		nt.setText(rst.getString("text"));
-	    		nt.setUser(rst.getString("user"));
-	    		nt.setTime(rst.getString("time"));
-	    		
-	    		
-	    		//nt.setPicture(rst.getString("picture"));
-
-	    		System.out.println("papito coleasdawd");
-	    		session.setAttribute("title" + i, nt.getTitle());
-	    		session.setAttribute("text" + i, nt.getText());
-	    		session.setAttribute("usertweet" + i, nt.getUser());
-	    		session.setAttribute("time" + i , nt.getTime());
-	    		i++;
-	    		System.out.println("SHUUURS AQUI LLEGA");
-	    		
-	    	}
-	    
-	    	ResultSet count = dao.executeSQL("SELECT COUNT(*) FROM tweets WHERE user ='"+ session.getAttribute("user") + "' GROUP BY user");
-	    	session.setAttribute("numtweets" , i);
-	    dao.disconnectBD();
-	    */
 		session.setAttribute("alltweets", alltweets);
 		request.setAttribute("alltweets", alltweets);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMainTweets.jsp");
@@ -114,7 +83,7 @@ public class TweetsController extends HttpServlet {
 
 		}
 		catch(Exception e){
-			System.out.println("excepcion tweetscontroller");
+			System.out.println("excepcion TweetsController");
 			
 		}
 		

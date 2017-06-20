@@ -96,10 +96,6 @@ public class BeanTweet {
 			System.out.println("tweet okey");
 			try {
 				DAO dao = new DAO();
-				System.out.println(this.getUser().toString());
-				System.out.println(this.getTitle().toString());
-				System.out.println(this.getText().toString());
-				System.out.println(this.getTime().toString());
 				dao.insertTweetSQL(this);
 				if (dao.getStatus() > 0)
 					System.out.println("Tweet has been introduced in the database!");

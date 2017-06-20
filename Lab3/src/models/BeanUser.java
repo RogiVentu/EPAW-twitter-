@@ -2,6 +2,10 @@ package models;
 
 import java.io.Serializable;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import utils.DAO;
 
 public class BeanUser implements Serializable  {
@@ -116,6 +120,32 @@ public class BeanUser implements Serializable  {
 	}
 	
 	/* Logic Functions */
+	public List<BeanUser>  getSearchedUsers(String user) throws SQLException{ //connect with the database and fill the ResultSet
+		
+		ResultSet rst = null;
+		List<BeanUser> users= new ArrayList<>();
+		try {
+			DAO dao = new DAO();
+			System.out.println(user);
+			rst = dao.executeSQL("SELECT username FROM users WHERE username like'"+ user +"%'ORDER BY username;");		
+			while(rst.next()){
+				BeanUser bt = new BeanUser();
+	    		bt.setUser(rst.getString("username"));
+	    		//System.out.println(rst.getString("user").toString());
+	    		System.out.println(rst.getString("username").toString());
+				users.add(bt);
+			}
+			System.out.println(users.size());
+			dao.disconnectBD();
+			return users;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception ocurred with searched users");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	
 	/*Check if all the fields are filled correctly */
 	public boolean isComplete() {

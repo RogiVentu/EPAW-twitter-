@@ -5,16 +5,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
+<c:if test="${not empty isGuest}">
+	<p><b>If you want to tweet, please sign up and get
+		logged !</b></p><br><br>
+</c:if>
+<c:if test="${empty isGuest}">
+	<div style="border-style: groove; border-radius: 5px; margin-bottom:2%;">
+		<form id = "tweet_pl">
+	  		<input style="margin-left: 1%; margin-top: 2%; margin-right: 30%; width: 97%;" type="text" name="title" placeholder="What happens?">
+	  		<br><br>
+	  		<textarea style="resize:none; margin-left: 1%; margin-right: 2%; width: 97%;" rows="5" cols="70" name="text" placeholder="Explain it plz..."></textarea>
+	  		<br><br>
+	  		<input type="submit" value="Submit">
+		</form> 
+	</div>
+</c:if>
 
-<div style="border-style: groove; border-radius: 5px; margin-bottom:2%;">
-	<form id = "tweet_pl">
-  		<input style="margin-left: 1%; margin-top: 2%; margin-right: 30%; width: 97%;" type="text" name="title" placeholder="What happens?">
-  		<br><br>
-  		<textarea style="resize:none; margin-left: 1%; margin-right: 2%; width: 97%;" rows="5" cols="70" name="text" placeholder="Explain it plz..."></textarea>
-  		<br><br>
-  		<input type="submit" value="Submit">
-	</form> 
-</div>
+
  
 <div id="show_alltw">
 
@@ -24,15 +31,15 @@
 	
 </div>
 
-	<script>
-		$(document).ready(
-				function() {
-					$("#tweet_pl").validate(
-							{
-								submitHandler : function(form) {
-									$('#content').load('PublishTweetController',
-											$("#tweet_pl").serialize());
-								}
-							});
-				});
-	</script>
+<script>
+	$(document).ready(
+			function() {
+				$("#tweet_pl").validate(
+						{
+							submitHandler : function(form) {
+								$('#content').load('PublishTweetController',
+										$("#tweet_pl").serialize());
+							}
+						});
+			});
+</script>
