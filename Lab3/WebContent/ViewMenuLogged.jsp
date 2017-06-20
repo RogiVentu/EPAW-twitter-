@@ -14,7 +14,7 @@
 			<li><a href=# class="perspage" id="TweetsController">Personal
 					Page</a></li>
 			<li><a href="#">BLABLA</a></li>
-			<li><a href=# class="profpage" id="ViewProfile.jsp">${user}
+			<li><a href=# class="profpage" id="ProfileController">${user}
 					(profile page)</a></li>
 			<!-- OBVIAMENTE HACE FALTA CONTROLLADOR DE PROFILE PARA PASAR LAS DADAS, PERO DE MIENTRAS -->
 			<li><a href=# class="logpage" id="LogoutController">Logout</a></li>

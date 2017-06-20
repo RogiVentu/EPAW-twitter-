@@ -14,6 +14,12 @@
 			logged !</p>
 	</c:if>
 	<c:if test="${empty isGuest}">
-		<p>(YOUR INFORMATION , a picture, studies, work, description...)</p>
+		<c:set var="userP" value="${userProfile}" />
+		<div>${userP.name}</div><br><br>
+		<div>${userP.surnames}</div><br><br>
+		<div>${userP.gender}</div><br><br>
+		<div>${userP.datebirth}</div><br><br>
+		<div>${userP.user}</div><br><br>
+		<div>${userP.mail}</div><br><br>
 	</c:if>
 </div>
