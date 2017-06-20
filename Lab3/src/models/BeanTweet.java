@@ -1,13 +1,16 @@
 package models;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.ResultSet;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
+
+import org.apache.commons.beanutils.BeanUtils;
+
 import utils.DAO;
 
-
 public class BeanTweet {
-	
 
 	private String id = "0";
 	private String title = "";
@@ -15,9 +18,8 @@ public class BeanTweet {
 	private String user = "";
 	private String time = "";
 	private String picture = "";
-	
-	private int[] error = {0,0};
-	
+
+	private int[] error = { 0, 0 };
 
 	public String getId() {
 		return id;
@@ -70,24 +72,52 @@ public class BeanTweet {
 	public int[] getError() {
 		return error;
 	}
-	
+
 	public void setErrorU(int error) {
 		this.error[0] = error;
 	}
-	
+
 	public void setErrorP(int error) {
 		this.error[1] = error;
 	}
+
+	/*
+	 * public ResultSet getTweet(ResultSet rs){ try{ DAO dao = new DAO(); rs =
+	 * dao.executeSQL("SELECT * FROM tweets;" );
+	 * 
+	 * } catch(Exception e){ System.out.println("error getAllTweets");
+	 * 
+	 * } return rs; }
+	 */
+
+	public void insertTweet() {
+
+		if (this.isComplete()) {
+			System.out.println("tweet okey");
+			try {
+				DAO dao = new DAO();
+				System.out.println(this.getUser().toString());
+				System.out.println(this.getTitle().toString());
+				System.out.println(this.getText().toString());
+				System.out.println(this.getTime().toString());
+				dao.insertTweetSQL(this);
+				if (dao.getStatus() > 0)
+					System.out.println("Tweet has been introduced in the database!");
+
+				dao.disconnectBD();
+			} catch (Exception e) {
+				System.out.println("EXCEPTION: Problem inserting tweet in the database");
+			}
+		}
+	}
+
 	public boolean isComplete() {
-	    return(hasValue(getId()) &&
-	    		hasValue(getTitle()) &&
-	    		hasValue(getText()) &&
-	    		hasValue(getUser()) &&
-	    		hasValue(getTime()));
+		return (hasValue(getId()) && hasValue(getTitle()) && hasValue(getText()) && hasValue(getUser())
+				&& hasValue(getTime()));
 	}
-	
+
 	private boolean hasValue(String val) {
-		return((val != null) && (!val.equals("")));
+		return ((val != null) && (!val.equals("")));
 	}
-	
+
 }

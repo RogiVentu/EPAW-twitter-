@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.BeanTweet;
 import models.BeanUser;
 
 public class DAO {
@@ -56,6 +57,23 @@ public class DAO {
 		","+user.getSurnames()+","+user.getGender()+","+user.getDatebirth()+");");*/
 		
 	}
+	
+	public void insertTweetSQL(BeanTweet tweet) throws SQLException{
+		
+		ps = connection.prepareStatement("insert into tweets (title,text,user,time,picture) values(?,?,?,?,?);");
+		ps.setString(1, tweet.getTitle());
+		ps.setString(2, tweet.getText());
+		ps.setString(3, tweet.getUser());
+		ps.setString(4, tweet.getTime());
+		ps.setString(5, "NULL");
+		
+		status = ps.executeUpdate();
+
+		/*statement.executeUpdate("insert into users values (" + user.getUser()+","+user.getPass()+","+user.getMail()+","+user.getName()+
+		","+user.getSurnames()+","+user.getGender()+","+user.getDatebirth()+");");*/
+		
+	}
+
 
 	// TODO: code for updates for Assignments 2, 3 and 4.
 	public void disconnectBD() throws SQLException {

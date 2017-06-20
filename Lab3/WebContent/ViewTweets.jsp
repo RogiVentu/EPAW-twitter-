@@ -7,6 +7,19 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+<div id="show_tweets">
+	<!--<p id="showtw"><b><u>${title0}</u></b> - at ${time0}<br><br>${text0}<br><br>By: ${usertweet0}</p><br><br><br>
+	<p id="showtw"><b><u>${title1}</u></b> - at ${time1}<br><br>${text1}<br><br>By: ${usertweet1}</p><br><br><br>-->
+	<c:if test="${not empty isGuest}">
+		<p>If you want to create your own tweets, please sign up and get
+			logged !</p>
+	</c:if>
+	<c:if test="${empty isGuest}">
+		<p id="showtw"></p>
+	</c:if>
+</div>
+
 <script type="text/javascript">
 	var num = ${numtweets};
 	var text = "";
@@ -24,15 +37,3 @@
 
 	document.getElementById("showtw").innerHTML = text;
 </script>
-
-<div id="show_tweets">
-	<!--<p id="showtw"><b><u>${title0}</u></b> - at ${time0}<br><br>${text0}<br><br>By: ${usertweet0}</p><br><br><br>
-	<p id="showtw"><b><u>${title1}</u></b> - at ${time1}<br><br>${text1}<br><br>By: ${usertweet1}</p><br><br><br>-->
-	<c:if test="${not empty isGuest}">
-		<p>If you want to create your own tweets, please sign up and get
-			logged !</p>
-	</c:if>
-	<c:if test="${empty isGuest}">
-		<p id="showtw"></p>
-	</c:if>
-</div>

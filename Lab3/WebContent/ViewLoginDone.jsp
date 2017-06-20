@@ -3,6 +3,9 @@
 	
 	
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+	
+
+<p id="log_done" style="color: black">Login for user ${user} done!</p>
 
 <script type="text/javascript">
 
@@ -19,11 +22,6 @@
 
 <script>
 	setTimeout(function() {
-		$('#content').load('MainTweetsController')
+		$('#content').load('TweetsController')
 	}, 2000);
 </script>
-
-	
-
-<p id="log_done" style="color: black">Login for user ${user} done!</p>
-

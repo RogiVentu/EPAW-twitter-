@@ -38,69 +38,75 @@
 
 <body>
 
-<script>
-	$(document).ready(
-			function() {
-				$("#loginForm").validate(
-						{
-							submitHandler : function(form) {
-								$('#content').load('LoginController',
-										$("#loginForm").serialize());
-							}
-						});
-			});
-</script>
 
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".goSignUp").click(function(event) {
-        $('#content').load('ContentController',{content: $(this).attr('id')});
-        });
-});
-</script>
-
-
-
-<script type="text/javascript">
-$(document).ready(function() {
-    $(".goAsAnon").click(function(event) {
-        $('#content').load('ContentController',{content: $(this).attr('id')});
-        });
-});
-</script>
 	<%
-			BeanLogin login = null;
-			if (request.getAttribute("login") != null) {
-				login = (BeanLogin) request.getAttribute("login");
-			} else {
-				login = new BeanLogin();
-			}
-		%>
+		BeanLogin login = null;
+		if (request.getAttribute("login") != null) {
+			login = (BeanLogin) request.getAttribute("login");
+		} else {
+			login = new BeanLogin();
+		}
+	%>
 	<div id="contnotlog" class="logandreg">
-	<form  action="/Lab3/LoginController" id="loginForm" method="post">
-		<fieldset>
-			<div class="form-group">
-				<label> Username </label>
-					<input type="text" name="user" id="user" class="form-control"
-						value="${login.user}" />
-				<c:if test="${login.error[0] == 1}">
-					<span class="error">Nonexistent username in our DB!</span>
-				</c:if>
-			</div>
+		<form action="/Lab3/LoginController" id="loginForm" method="post">
+			<fieldset>
+				<div class="form-group">
+					<label> Username </label> <input type="text" name="user" id="user"
+						class="form-control" value="${login.user}" />
+					<c:if test="${login.error[0] == 1}">
+						<span class="error">Nonexistent username in our DB!</span>
+					</c:if>
+				</div>
 
-			<div class="form-group">
-				<label > Password </label>
-					<input type="password" name="pass" class="form-control" id="pass"
-						value="${login.pass}" />
-				<c:if test="${login.error[1] == 1}">
-					<span class="error">Incorrect password!</span>
-				</c:if>
-			</div>
+				<div class="form-group">
+					<label> Password </label> <input type="password" name="pass"
+						class="form-control" id="pass" value="${login.pass}" />
+					<c:if test="${login.error[1] == 1}">
+						<span class="error">Incorrect password!</span>
+					</c:if>
+				</div>
 
-			<input class="button button_submit_login" name="sumbit" type="submit" value="Submit">
-		</fieldset>
-	</form>
-	<a href=# id="RegisterController"class="goSignUp button button_primary_login">Sign Up</a><br>
-	<a  href=# id="AnonymusController"class="goAsAnon button_anonymus">Go as anonymus</a>
+				<input class="button button_submit_login" name="sumbit"
+					type="submit" value="Submit">
+			</fieldset>
+		</form>
+		<a href=# id="RegisterController"
+			class="goSignUp button button_primary_login">Sign Up</a><br> <a
+			href=# id="AnonymusController" class="goAsAnon button_anonymus">Go
+			as anonymus</a>
 	</div>
+	<script>
+		$(document).ready(
+				function() {
+					$("#loginForm").validate(
+							{
+								submitHandler : function(form) {
+									$('#content').load('LoginController',
+											$("#loginForm").serialize());
+								}
+							});
+				});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goSignUp").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
+
+
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goAsAnon").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
 </body>

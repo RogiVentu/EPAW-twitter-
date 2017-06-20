@@ -54,57 +54,7 @@
 
 </head>
 <body>
-	<!-- FUNCTIONS -->
 
-
-	<script>
-		$(document).ready(
-				function() {
-					$("#registerForm").validate(
-							{
-								submitHandler : function(form) {
-									$('#content').load('RegisterController',
-											$("#registerForm").serialize());
-								}
-							});
-				});
-	</script>
-
-	<script>
-		$(document).ready(
-				function() {
-					var date_input = $('input[name="date"]'); //our date input has the name "date"
-					var container = $('.bootstrap-iso form').length > 0 ? $(
-							'.bootstrap-iso form').parent() : "body";
-					var options = {
-						format : 'dd/mm/yyyy',
-						container : container,
-						todayHighlight : true,
-						autoclose : true,
-					};
-					date_input.datepicker(options);
-				})
-	</script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".goLogin").click(function(event) {
-				$('#content').load('ContentController', {
-					content : $(this).attr('id')
-				});
-			});
-		});
-	</script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$(".goAsAnon").click(function(event) {
-				$('#content').load('ContentController', {
-					content : $(this).attr('id')
-				});
-			});
-		});
-	</script>
 	<div id="contnotlog" class="logandreg">
 		<div id="formular">
 
@@ -186,5 +136,56 @@
 			href=# id="AnonymusController" class="goAsAnon button_anonymus">Go
 			as anonymus</a>
 	</div>
+	<!-- FUNCTIONS -->
+
+
+	<script>
+		$(document).ready(
+				function() {
+					$("#registerForm").validate(
+							{
+								submitHandler : function(form) {
+									$('#content').load('RegisterController',
+											$("#registerForm").serialize());
+								}
+							});
+				});
+	</script>
+
+	<script>
+		$(document).ready(
+				function() {
+					var date_input = $('input[name="date"]'); //our date input has the name "date"
+					var container = $('.bootstrap-iso form').length > 0 ? $(
+							'.bootstrap-iso form').parent() : "body";
+					var options = {
+						format : 'dd/mm/yyyy',
+						container : container,
+						todayHighlight : true,
+						autoclose : true,
+					};
+					date_input.datepicker(options);
+				})
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goLogin").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".goAsAnon").click(function(event) {
+				$('#content').load('ContentController', {
+					content : $(this).attr('id')
+				});
+			});
+		});
+	</script>
 </body>
 </html>

@@ -2,6 +2,8 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.ResultSet;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +13,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanComparator;
+import org.apache.commons.collections.comparators.ComparableComparator;
+import org.apache.commons.collections.comparators.ReverseComparator;
+
 import models.BeanTweet;
+import models.BeanTweets;
 import utils.DAO;
 
 /**
@@ -35,9 +42,9 @@ public class TweetsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		System.out.println("TweetsController.");
+		System.out.println("TweetsController, loading: ViewMainTweets.jsp");
 		HttpSession session = request.getSession();
-		int i = 1;
+		/*int i = 1;
 	    while (i >= 0) {
 			session.removeAttribute("title" + i);
 			session.removeAttribute("text" + i);
@@ -46,22 +53,42 @@ public class TweetsController extends HttpServlet {
 			i--;
 		}
 	    i++;
-	    session.removeAttribute("numtweets");
+	    session.removeAttribute("numtweets");*/
 		try{
-			DAO dao = new DAO();
+			//DAO dao = new DAO();
+			BeanTweets bts = new BeanTweets();
+			List<BeanTweet> alltweets = null;
+			if(session.getAttribute("isGuest") != null){
+				System.out.println("isGuest = true");
+				alltweets = bts.getTweets();
+				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
+				Collections.sort(alltweets, reverseOrderBeanComparator);
+				System.out.println(alltweets.size());
+			}
+			else{
+				
+				alltweets = bts.getFollowedTweets(session.getAttribute("user").toString());
+				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
+				Collections.sort(alltweets, reverseOrderBeanComparator);
+				System.out.println(session.getAttribute("user").toString());
+				System.out.println(alltweets.size());
+				//				rst = dao.executeSQL("SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = '" + session.getAttribute("user") + "' AND T.user = F.followed");
+				
+			}
 			
-
 			
-			ResultSet rst = dao.executeSQL("SELECT * FROM tweets WHERE user = '" + session.getAttribute("user") + "'");
+			
+			
 	    	//recorrer el rst que contiene titulos y text de todos los tweets de el usuario y luego
 			
 	    	
-	    	while(rst.next()){
+	    	/*while(rst.next()){
 	    		BeanTweet nt = new BeanTweet();
 	    		nt.setTitle(rst.getString("title"));
 	    		nt.setText(rst.getString("text"));
 	    		nt.setUser(rst.getString("user"));
 	    		nt.setTime(rst.getString("time"));
+	    		
 	    		
 	    		//nt.setPicture(rst.getString("picture"));
 
@@ -72,13 +99,16 @@ public class TweetsController extends HttpServlet {
 	    		session.setAttribute("time" + i , nt.getTime());
 	    		i++;
 	    		System.out.println("SHUUURS AQUI LLEGA");
+	    		
 	    	}
 	    
-	    	//ResultSet count = dao.executeSQL("SELECT COUNT(*) FROM tweets WHERE user ='"+ session.getAttribute("user") + "' GROUP BY user");
+	    	ResultSet count = dao.executeSQL("SELECT COUNT(*) FROM tweets WHERE user ='"+ session.getAttribute("user") + "' GROUP BY user");
 	    	session.setAttribute("numtweets" , i);
 	    dao.disconnectBD();
-	    
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewTweets.jsp");
+	    */
+		session.setAttribute("alltweets", alltweets);
+		request.setAttribute("alltweets", alltweets);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMainTweets.jsp");
 	    dispatcher.forward(request, response);
 	    
 
