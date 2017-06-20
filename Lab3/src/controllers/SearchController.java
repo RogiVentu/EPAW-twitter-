@@ -49,12 +49,11 @@ public class SearchController extends HttpServlet {
 		try{
 			//create BeanUser to get list of searched users
 			//crete method in BeanUser getSearchedUsers
-			//DAO dao = new DAO();
 			BeanUser users = new BeanUser();
-			List<BeanUser> userlist = null;
+			List<BeanUser> userlist = null;						//initialize list of searched users
 			String search = request.getParameter("s_user");
-			userlist = users.getSearchedUsers(search);
-			session.setAttribute("userlist", userlist);
+			userlist = users.getSearchedUsers(search);			//getSearchedUsers returns the list of users
+			session.setAttribute("userlist", userlist);			//store it in the session to take it from the jsp
 			request.setAttribute("userlist", userlist);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearch.jsp");
 		    dispatcher.forward(request, response);

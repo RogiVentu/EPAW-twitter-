@@ -29,7 +29,7 @@ public class ContentController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String content = (String)request.getParameter("content");
+		String content = (String)request.getParameter("content");				//returns what content do we have to show in the content part
 		System.out.println("ContentController, loading: " + content);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(content);
 		dispatcher.forward(request, response);

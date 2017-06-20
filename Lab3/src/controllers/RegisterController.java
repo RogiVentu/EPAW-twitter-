@@ -42,27 +42,26 @@ public class RegisterController extends HttpServlet {
 	   try {
 		   BeanUtils.populate(user, request.getParameterMap());
 		
-		   if (user.isComplete()) {
-			   System.out.println("shur");
+		   if (user.isComplete()) {			//check if all the fields are full
 			   try{
 					DAO dao = new DAO();
 					ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" +user.getUser()+"'");
 
-					if (rs.next())
+					if (rs.next())			//check if the username we want is already created
 					{
 						System.out.println("Username already exists");
 						user.setErrorU(1);
 
-						System.out.println("Unsucsesful registration");
+						System.out.println("Unsuccesful registration");
 						
 						request.setAttribute("user",user);
-						RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp");
+						RequestDispatcher dispatcher = request.getRequestDispatcher("ViewRegisterForm.jsp"); //if it's not send back to the RegisterForm
 						dispatcher.forward(request, response);
 						return;
 					}
 					
-					ResultSet rs1 = dao.executeSQL("SELECT email FROM users WHERE email = '" +user.getMail()+"'");
-					if (rs1.next())
+					ResultSet rs1 = dao.executeSQL("SELECT email FROM users WHERE email = '" +user.getMail()+"'"); 
+					if (rs1.next()) //same checks for the mail
 					{
 						System.out.println("Email already exists");
 						user.setErrorE(1);
@@ -75,7 +74,7 @@ public class RegisterController extends HttpServlet {
 						return;
 					}
 
-					dao.insertUserSQL(user);
+					dao.insertUserSQL(user);			//if all is correct insert it in the database
 
 					
 					if(dao.getStatus() > 0)

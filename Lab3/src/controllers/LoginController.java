@@ -44,14 +44,15 @@ public class LoginController extends HttpServlet {
 		BeanLogin login = new BeanLogin();
 	    try {
 			
-	    	BeanUtils.populate(login, request.getParameterMap());
 	    	
-	    	if (login.isComplete()) {
+	    	BeanUtils.populate(login, request.getParameterMap()); //stores inserted values in the bean to use it later
+	    	
+	    	if (login.isComplete()) {	//check if the login values are correct
 
 	    		try{
 	    			DAO dao = new DAO();
-	    			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" + login.getUser() + "'");
-	    			if(!rs.next())
+	    			ResultSet rs = dao.executeSQL("SELECT username FROM users WHERE username = '" + login.getUser() + "'");  //check if the user doesn't exist
+	    			if(!rs.next()) //if it's empty it means the is no username with the introduced input
 	    			{
 	    				System.out.println("Username doesn't exist");
 	    				login.setErrorU(1);
@@ -62,7 +63,7 @@ public class LoginController extends HttpServlet {
 	    			}
 	    			else{
 	    				ResultSet rs1 = dao.executeSQL("SELECT password FROM users WHERE username = '" + login.getUser() + "' AND password = '" + login.getPass() + "'");
-		    			if(!rs1.next())
+		    			if(!rs1.next()) //if bought are correct don't enter here
 		    			{
 		    				System.out.println("Incorrect password");
 		    				login.setErrorP(1);
@@ -71,8 +72,7 @@ public class LoginController extends HttpServlet {
 		    	    		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");
 		    			    dispatcher.forward(request, response);
 		    			}
-		    			else{
-		    				System.out.println("WHYYas");
+		    			else{			//if all is correct the login is done
 		    				
 		    				HttpSession session = request.getSession();
 		    		    	session.setAttribute("user",login.getUser());
@@ -89,7 +89,7 @@ public class LoginController extends HttpServlet {
 	    		}
 			    
 		    } 
-			else {
+			else { //if login is not complete we go again to the ViewLoginForm
 				
 			    request.setAttribute("login",login);
 			    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginForm.jsp");

@@ -36,6 +36,8 @@ public class MainTweetsController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//Maybe aqui tendría que ir lo que hay en TweetsController
+		
 		System.out.println("MainTweetsController.");
 		HttpSession session = request.getSession();
 		

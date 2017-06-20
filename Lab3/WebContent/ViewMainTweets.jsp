@@ -7,7 +7,7 @@
 
 <c:if test="${not empty isGuest}">
 	<p><b>If you want to tweet, please sign up and get
-		logged !</b></p><br><br>
+		registered !</b></p><br><br>
 </c:if>
 <c:if test="${empty isGuest}">
 	<div style="border-style: groove; border-radius: 5px; margin-bottom:2%;">

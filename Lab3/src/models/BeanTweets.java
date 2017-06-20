@@ -11,13 +11,13 @@ import models.BeanTweet;
 import utils.DAO;
 
 public class BeanTweets {
-
-	//private BeanTweet[] tweets;
 	
-	//private List<BeanTweet> alltweets= new ArrayList<>();
-	
+	//This class is more used as a functionality than a Bean
+	//But doing it like this way we respect the MVC model
 	
 	/*********Return tweets depending on your needs**********/
+	
+	/*********Return all created tweets (Guest)**********/
 	public List<BeanTweet>  getTweets() throws SQLException{ //connect with the database and fill the ResultSet
 		
 		ResultSet rst = null;
@@ -45,10 +45,11 @@ public class BeanTweets {
 		return null;
 	}
 	
-	public List<BeanTweet>  getFollowedTweets(String user) throws SQLException{ //connect with the database and fill the ResultSet
+	/*********Return tweets of people you follow (Guest)**********/
+	public List<BeanTweet>  getFollowedTweets(String user) throws SQLException{ //pass user as parameter to get the tweets of people we follow
 		
 		ResultSet rst = null;
-		List<BeanTweet> alltweets= new ArrayList<>();
+		List<BeanTweet> alltweets= new ArrayList<>();		//initialize the list of BeanTweet that we will return
 		try {
 			DAO dao = new DAO();
 			System.out.println(user);
@@ -73,9 +74,8 @@ public class BeanTweets {
 		return null;
 	}
 
-	//falta por implementar
+	//falta por implementar, devuelve un tweet específico dado un id
 	public BeanTweet getTweet(int id){
-		//recorrer arraylist de beantweet y devolver el que tenga ese id
 		BeanTweet bt = new BeanTweet();
 		return bt;
 	}

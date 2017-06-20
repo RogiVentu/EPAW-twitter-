@@ -56,17 +56,17 @@ public class PublishTweetController extends HttpServlet {
 	    session.removeAttribute("numtweets");*/
 		try{
 			//DAO dao = new DAO();
-			BeanTweet tweet = new BeanTweet();
-			tweet.setUser(session.getAttribute("user").toString());
-			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+			BeanTweet tweet = new BeanTweet();										//initialize tweet to fill it with the needed data
+			tweet.setUser(session.getAttribute("user").toString());					//get the username from the session
+			DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");	//take the date in the format that we want
 			Date date = new Date();
-			tweet.setTime(dateFormat.format(date).toString());
+			tweet.setTime(dateFormat.format(date).toString()); 						//once we have it as we want make setTime
 			BeanUtils.populate(tweet, request.getParameterMap());
-			tweet.insertTweet();	    
+			tweet.insertTweet();	    											//inside this method we insert the tweet in the database
 
 		}
 		catch(Exception e){
-			System.out.println("excepcion tweetscontroller");
+			System.out.println("Exception TweetsController");
 			
 		}
 		

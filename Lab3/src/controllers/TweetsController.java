@@ -55,19 +55,20 @@ public class TweetsController extends HttpServlet {
 	    i++;
 	    session.removeAttribute("numtweets");*/
 		try{
-			//DAO dao = new DAO();
 			BeanTweets bts = new BeanTweets();
-			List<BeanTweet> alltweets = null;
-			if(session.getAttribute("isGuest") != null){
+			List<BeanTweet> alltweets = null;				//initialize the list of tweets we will return
+			if(session.getAttribute("isGuest") != null){	//if the user is a guest
 				//System.out.println("isGuest = true");
-				alltweets = bts.getTweets();
+				alltweets = bts.getTweets();				//return all the tweets created
+				//with the BeanComparator and Collections we reverse the list of tweets returned to 
+				//show the recent artweeted artweets at the top of the page
 				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
 				Collections.sort(alltweets, reverseOrderBeanComparator);
 				//System.out.println(alltweets.size());
 			}
-			else{
+			else{											//if the user is not a guest
 				
-				alltweets = bts.getFollowedTweets(session.getAttribute("user").toString());
+				alltweets = bts.getFollowedTweets(session.getAttribute("user").toString()); //return the list of tweets of the people we follow
 				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
 				Collections.sort(alltweets, reverseOrderBeanComparator);
 				//System.out.println(session.getAttribute("user").toString());
@@ -75,7 +76,7 @@ public class TweetsController extends HttpServlet {
 				
 			}
 			
-		session.setAttribute("alltweets", alltweets);
+		session.setAttribute("alltweets", alltweets);		//store it in the session to take it in ViewMainTweets.jsp	
 		request.setAttribute("alltweets", alltweets);
 	    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMainTweets.jsp");
 	    dispatcher.forward(request, response);

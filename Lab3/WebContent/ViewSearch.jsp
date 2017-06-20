@@ -18,6 +18,7 @@
 	
 </div>
 
+<!-- Validate the form and send the serialize the searched userto use it after -->
 <script>
 	$(document).ready(
 			function() {

@@ -31,9 +31,9 @@ public class AnonymusController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
-		int i = 1000 - (int)(Math.random() * 1000);
+		int i = 1000 - (int)(Math.random() * 1000);		//sets a random number as guest user
     	session.setAttribute("user","Guest " + i);
-    	session.setAttribute("isGuest", 1);
+    	session.setAttribute("isGuest", 1);				//bool that we use to know if it's guest or not
     	RequestDispatcher dispatcher = request.getRequestDispatcher("ViewLoginDone.jsp");
 	    dispatcher.forward(request, response);
 	}

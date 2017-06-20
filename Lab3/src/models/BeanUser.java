@@ -123,20 +123,18 @@ public class BeanUser implements Serializable  {
 	public List<BeanUser>  getSearchedUsers(String user) throws SQLException{ //connect with the database and fill the ResultSet
 		
 		ResultSet rst = null;
-		List<BeanUser> users= new ArrayList<>();
+		List<BeanUser> users= new ArrayList<>();				//here we store each user that corresponds with the search
 		try {
 			DAO dao = new DAO();
-			System.out.println(user);
-			rst = dao.executeSQL("SELECT username FROM users WHERE username like'"+ user +"%'ORDER BY username;");		
+			rst = dao.executeSQL("SELECT username FROM users WHERE username like'"+ user +"%'ORDER BY username;"); //returns every user that starts or is user		
 			while(rst.next()){
 				BeanUser bt = new BeanUser();
-	    		bt.setUser(rst.getString("username"));
-	    		//System.out.println(rst.getString("user").toString());
+	    		bt.setUser(rst.getString("username"));			//for each new BeanUser we store the username of the result set
 	    		System.out.println(rst.getString("username").toString());
 				users.add(bt);
 			}
 			System.out.println(users.size());
-			dao.disconnectBD();
+			dao.disconnectBD();									//close the connection with the database
 			return users;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
