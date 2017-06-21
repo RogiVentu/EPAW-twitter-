@@ -160,6 +160,40 @@ label{
 	margin-right: 30%;
 	position:relative;
 }
+
+.u_found {
+        border: solid 1px #000;
+        display: flex;
+        justify-content: space-between;
+        padding-top:1%;
+        padding-bottom:1%;
+        border-radius:5px;
+    }
+
+.username_s
+{
+  margin-left:2%;  
+}
+
+.follow
+{
+  margin-right:2%;  
+}
+
+.pers_text
+{
+	margin-left: 40%; 
+	margin-bottom: 10%;
+}
+
+.pers_img
+{
+	width: 150px; 
+	height:150px;
+	border-style: groove;  
+	border-radius: 5px;
+}
+
 .imglogomenu{
 	width: 100px;
 	height:100px;

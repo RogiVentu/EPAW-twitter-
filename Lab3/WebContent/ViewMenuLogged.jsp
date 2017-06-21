@@ -11,7 +11,7 @@
 			<li><a href=# class="searchb" id="ViewSearch.jsp">Search</a></li>
 			<li><a href=# class="mainpage" id="TweetsController">Main
 					Page</a></li>
-			<li><a href=# class="perspage" id="TweetsController">Personal
+			<li><a href=# class="perspage" id="PersonalTweetsController">Personal
 					Page</a></li>
 			<li><a href="#">BLABLA</a></li>
 			<li><a href=# class="profpage" id="ProfileController">${user}

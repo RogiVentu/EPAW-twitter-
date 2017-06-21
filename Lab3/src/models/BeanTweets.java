@@ -75,9 +75,32 @@ public class BeanTweets {
 	}
 
 	//falta por implementar, devuelve un tweet específico dado un id
-	public BeanTweet getTweet(int id){
-		BeanTweet bt = new BeanTweet();
-		return bt;
+	public List<BeanTweet> getPersonalTweets(String user){
+		
+		ResultSet rst = null;
+		List<BeanTweet> alltweets= new ArrayList<>();		//initialize the list of BeanTweet that we will return
+		try {
+			DAO dao = new DAO();
+			System.out.println(user);
+			rst = dao.executeSQL("SELECT id, title, text , user, time FROM tweets T WHERE T.user = '" + user + "';");		
+			while(rst.next()){
+				BeanTweet bt = new BeanTweet();
+				bt.setId(rst.getString("id"));
+				bt.setTitle(rst.getString("title"));
+	    		bt.setText(rst.getString("text"));
+	    		bt.setUser(rst.getString("user"));
+	    		bt.setTime(rst.getString("time"));
+	    		
+				alltweets.add(bt);
+			}
+			dao.disconnectBD();
+			return alltweets;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
 	}
 	
 	/*********INSERT **********/

@@ -62,3 +62,5 @@ UNLOCK TABLES;
 #SELECT * FROM follows;
 #SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = 'Hancock' AND T.user = F.followed;
 #SELECT username FROM users WHERE username like'd%'ORDER BY username;
+#SELECT name, surnames, gender, datebirth, username, email FROM users WHERE username = 'Hancock';
+#SELECT id, title, text , user, time FROM tweets T WHERE T.user = 'Durant';
