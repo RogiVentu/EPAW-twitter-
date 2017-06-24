@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.BeanFollow;
 import models.BeanTweet;
 import models.BeanUser;
 
@@ -74,6 +75,14 @@ public class DAO {
 		
 	}
 
+	public void insertFollowSQL(BeanFollow follow) throws SQLException{
+		
+		ps = connection.prepareStatement("insert into follows (followed,byuser) values (?,?);");
+		ps.setString(1, follow.getFollowed());
+		ps.setString(2, follow.getByuser());
+		
+		status = ps.executeUpdate();
+	}
 
 	// TODO: code for updates for Assignments 2, 3 and 4.
 	public void disconnectBD() throws SQLException {

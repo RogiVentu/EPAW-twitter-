@@ -15,18 +15,17 @@
 
 	<c:forEach  var="username" items="${userlist}">
 		<div class="u_found">
-  			<div class="username_s"><b>${username.user}</b></div>
-  			<input id="" class="follow"type="submit" value="Follow">
+  			<!--  <div class="username_s"><b>${username.user}</b></div>-->
+  			<input class="username_s" type="submit" name="user_f_pp" value="${username.user}">
+  			<c:if test="${empty isGuest}">
+  				<input id="${username.user}" class="follow" type="submit" onclick="follow(this)" name="user_f" value="Follow">
+  			</c:if>
 		</div><br><br><br>
   	</c:forEach>
 	
 </div>
 
-<script>
-	$( "#follow" ).click(function() {
-		alert( "Handler for .click() called." );
-	});
-</script>
+
 
 <!-- Validate the form and send the serialize the searched userto use it after -->
 <script>
@@ -40,4 +39,29 @@
 							}
 						});
 			});
+	
+	function follow(that){
+	    var x = that.id;
+		console.log(x);
+		$.ajax({ 
+	        type: "POST",
+	        url: 'FollowController',
+	        data: {usertofollow: x},
+	        success: successFunc,
+	        error: errorFunc
+	    });
+
+	    function successFunc(data, status) {
+	    	//aqui es donde se cambia el boton follow por unfollow
+	        console.log("okey");
+	    }
+
+	    function errorFunc() {
+	    	console.log("mal");
+	    }
+		//recoger id cliced
+		//mi id
+		//llamada ajax al controller
+		//dentro del controller
+	}
 </script>

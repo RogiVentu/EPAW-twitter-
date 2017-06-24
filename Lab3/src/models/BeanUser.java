@@ -130,10 +130,8 @@ public class BeanUser implements Serializable {
 			while (rst.next()) {
 				BeanUser bt = new BeanUser();
 				bt.setUser(rst.getString("username")); // for each new BeanUser we store the username of the result set
-				System.out.println(rst.getString("username").toString());
 				users.add(bt);
 			}
-			System.out.println(users.size());
 			dao.disconnectBD(); // close the connection with the database
 			return users;
 		} catch (Exception e) {

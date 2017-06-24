@@ -172,7 +172,13 @@ label{
 
 .username_s
 {
-  margin-left:2%;  
+		margin-left:2%;
+		background-color: transparent;
+		background-repeat:no-repeat;
+		border: none;
+		cursor:pointer;
+		overflow: hidden;
+		outline:none;  
 }
 
 .follow
