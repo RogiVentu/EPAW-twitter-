@@ -78,8 +78,22 @@ public class DAO {
 	public void insertFollowSQL(BeanFollow follow) throws SQLException{
 		
 		ps = connection.prepareStatement("insert into follows (followed,byuser) values (?,?);");
+		System.out.println(follow.getFollowed());
+	    System.out.println(follow.getByuser());
 		ps.setString(1, follow.getFollowed());
 		ps.setString(2, follow.getByuser());
+		
+		status = ps.executeUpdate();
+	}
+	
+	public void unfollowSQL(BeanFollow unfollow) throws SQLException{
+		
+		
+	    ps = connection.prepareStatement("delete from follows where followed = ? and byuser = ?;");
+	    System.out.println(unfollow.getFollowed());
+	    System.out.println(unfollow.getByuser());
+		ps.setString(1, unfollow.getFollowed());
+		ps.setString(2, unfollow.getByuser());
 		
 		status = ps.executeUpdate();
 	}

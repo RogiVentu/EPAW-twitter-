@@ -41,27 +41,63 @@
 			});
 	
 	function follow(that){
+		//en esta función dependiendo de si el elem.value es
+		//Follow o Unfollow redirigimos la llamada ajax a un
+		//controller distinto para realizar acciones distintas
 	    var x = that.id;
-		console.log(x);
-		$.ajax({ 
-	        type: "POST",
-	        url: 'FollowController',
-	        data: {usertofollow: x},
-	        success: successFunc,
-	        error: errorFunc
-	    });
+	    if (that.value=="Follow") {
+			$.ajax({ 
+		        type: "POST",
+		        url: 'FollowController',
+		        data: {usertofollow: x},
+		        success: successFunc,
+		        error: errorFunc
+		    });
 
-	    function successFunc(data, status) {
-	    	//aqui es donde se cambia el boton follow por unfollow
-	        console.log("okey");
-	    }
+		    function successFunc(data, status) {
+		    	//aqui es donde se cambia el boton follow por unfollow
+		        that.value = "Unfollow";
+		    	console.log("Correct follow execution");
+		    }
 
-	    function errorFunc() {
-	    	console.log("mal");
+		    function errorFunc() {
+		    	console.log("Bad follow execution");
+		    }
+		    
+	    		
 	    }
-		//recoger id cliced
-		//mi id
-		//llamada ajax al controller
-		//dentro del controller
+	    else if(that.value=="Unfollow"){
+	    	$.ajax({ 
+		        type: "POST",
+		        url: 'UnfollowController',
+		        data: {usertofollow: x},
+		        success: successFunc,
+		        error: errorFunc
+		    });
+
+		    function successFunc(data, status) {
+		    	//aqui es donde se cambia el boton follow por unfollow
+		        console.log("Correct unfollow execution");
+		        
+		    }
+
+		    function errorFunc() {
+		    	console.log("Bad unfollow execution");
+		    }
+	    	
+	    }
+		console.log(that.value);
+
+
+	}
+	
+	//en esta función haremos la llamada ajax para ver si ya lo sigues
+	//si ya lo sigues cambiar valor del boton por Unfollow
+	function test(that){
+		
+		var value = that.value;
+		if(that.value=="Follow") that.value="Unfollow"
+		else that.value = "Follow";
+		
 	}
 </script>

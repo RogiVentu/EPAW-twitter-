@@ -36,7 +36,7 @@ CREATE TABLE `follows` (
 
 
 LOCK TABLES `follows` WRITE;
-INSERT INTO `follows` VALUES ('Hancock','Danielle'),('Danielle','Durant'),('Hancock','Durant'),('laieee','Durant'),('Danielle','laieee'),('Hancock','laieee'),('Durant','Hancock');
+INSERT INTO `follows` VALUES ('Hancock','Danielle'),('Danielle','Durant'),('laieee','Durant'),('Danielle','laieee'),('Hancock','laieee'),('Durant','Hancock');
 UNLOCK TABLES;
 
 
@@ -59,8 +59,10 @@ UNLOCK TABLES;
 
 
 #SELECT * FROM tweets;
-#SELECT * FROM follows;
+SELECT * FROM follows;
 #SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = 'Hancock' AND T.user = F.followed;
 #SELECT username FROM users WHERE username like'd%'ORDER BY username;
 #SELECT name, surnames, gender, datebirth, username, email FROM users WHERE username = 'Hancock';
 #SELECT id, title, text , user, time FROM tweets T WHERE T.user = 'Durant';
+#SELECT COUNT(*) AS countf FROM follows WHERE followed='Danielle' AND byuser='Hancock';
+DELETE FROM follows WHERE followed= 'Danielle' AND byuser='Hancock';

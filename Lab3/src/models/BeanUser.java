@@ -78,44 +78,36 @@ public class BeanUser implements Serializable {
 	}
 
 	public void setName(String name) {
-		System.out.println("Filling name field");
 		this.name = name;
 	}
 
 	public void setSurnames(String surnames) {
-		System.out.println("Filling surnames field");
 		this.surnames = surnames;
 	}
 
 	public void setGender(String gender) {
-		System.out.println("Filling gender field");
 		this.gender = gender;
 
 	}
 
 	public void setDatebirth(String datebirth) {
-		System.out.println("Filling datebirth field: ");
 		this.datebirth = datebirth;
 	}
 
 	public void setUser(String user) {
-		System.out.println("Filling user field");
 		this.user = user;
 	}
 
 	public void setPass(String pass) {
-		System.out.println("Filling pass field");
 		this.pass = pass;
 
 	}
 
 	public void setPassconf(String passconf) {
-		System.out.println("Filling passconf field");
 		this.passconf = passconf;
 	}
 
 	public void setMail(String mail) {
-		System.out.println("Filling mail field");
 		this.mail = mail;
 	}
 

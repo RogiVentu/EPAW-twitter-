@@ -78,6 +78,33 @@ public class BeanFollow implements Serializable {
 		}
 	}
 
+	public void deleteFollow(String followed, String byuser) {
+		ResultSet rst = null;
+		try {
+			DAO dao = new DAO();
+			this.setFollowed(followed);
+			this.setByuser(byuser);
+			dao.unfollowSQL(this);
+			rst = dao.executeSQL("SELECT COUNT(*) AS countf FROM follows WHERE followed='" + followed + "' AND byuser='" + byuser + "';"); // returns if he is already following the other
+			int count = 0;
+			if(rst.next()){
+				count = Integer.parseInt(rst.getString("countf")) ;
+			}
+			//int follow = rst.getInt(1);
+			if(count == 0){
+				System.out.println("Unfollow has been done correctly");
+			}
+			else
+				System.out.println("Unfollow has been done incorrectly");
+			dao.disconnectBD(); // close the connection with the database
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("EXCEPTION: Problem making unfollow");
+			e.printStackTrace();
+		}
+		
+	}
+
 	/* Check if all the fields are filled correctly 
 
 	private boolean hasValue(String val) {
