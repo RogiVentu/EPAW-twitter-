@@ -38,17 +38,8 @@ public class ProfileController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("ProfileController, loading: TweetController");
 		HttpSession session = request.getSession();
-		/*int i = 1;
-	    while (i >= 0) {
-			session.removeAttribute("title" + i);
-			session.removeAttribute("text" + i);
-			session.removeAttribute("user" + i);
-			session.removeAttribute("time" + i);
-			i--;
-		}
-	    i++;
-	    session.removeAttribute("numtweets");*/
 		try{
+
 			//DAO dao = new DAO();
 			BeanUser userProfile = new BeanUser();										//initialize tweet to fill it with the needed data
 			

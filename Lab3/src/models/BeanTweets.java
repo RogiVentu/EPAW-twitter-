@@ -52,7 +52,7 @@ public class BeanTweets {
 		List<BeanTweet> alltweets= new ArrayList<>();		//initialize the list of BeanTweet that we will return
 		try {
 			DAO dao = new DAO();
-			System.out.println(user);
+			//System.out.println(user);
 			rst = dao.executeSQL("SELECT id, title, text , user, time FROM tweets T, follows F WHERE F.byUser = '" + user + "' AND T.user = F.followed");		
 			while(rst.next()){
 				BeanTweet bt = new BeanTweet();

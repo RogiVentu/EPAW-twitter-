@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ContentController
@@ -28,8 +29,14 @@ public class ContentController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			
+		//System.out.println(user);
 		String content = (String)request.getParameter("content");				//returns what content do we have to show in the content part
+		if(content.equals("PersonalTweetsController") ){
+			HttpSession session = request.getSession();
+			String user= session.getAttribute("user").toString();
+			request.setAttribute("user_page", user);
+		}
 		System.out.println("ContentController, loading: " + content);
 		RequestDispatcher dispatcher = request.getRequestDispatcher(content);
 		dispatcher.forward(request, response);

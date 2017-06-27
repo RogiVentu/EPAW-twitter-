@@ -68,7 +68,6 @@ public class MainTweetsController extends HttpServlet {
 			// de el usuario y luego
 
 			while (rst.next()) {
-				System.out.println("llega papi");
 				BeanTweet nt = new BeanTweet();
 				nt.setTitle(rst.getString("title"));
 				nt.setText(rst.getString("text"));
@@ -77,13 +76,11 @@ public class MainTweetsController extends HttpServlet {
 
 				// nt.setPicture(rst.getString("picture"));
 
-				System.out.println("papito coleasdawd");
 				session.setAttribute("title" + i, nt.getTitle());
 				session.setAttribute("text" + i, nt.getText());
 				session.setAttribute("usertweet" + i, nt.getUser());
 				session.setAttribute("time" + i, nt.getTime());
 				i++;
-				System.out.println("SHUUURS AQUI LLEGA");
 			}
 			
 			//ResultSet count = dao.executeSQL("SELECT COUNT(*) FROM tweets WHERE user ='"+ session.getAttribute("user") + "' GROUP BY user");

@@ -46,14 +46,32 @@ public class PersonalTweetsController extends HttpServlet {
 		
 		System.out.println("PersonalTweetsController, loading: ViewPersonalPage.jsp");
 		HttpSession session = request.getSession();
+		String user= (String)request.getParameter("user_page");
+		String my_user= (String)request.getAttribute("user_page");
+		
 
 		try{
-			BeanUser userProfile = new BeanUser();										//initialize tweet to fill it with the needed data
-			userProfile.getProfile(session.getAttribute("user").toString());
+			//pasarle un parámetro ya sea tu usuario o el de otro
+			//getProfile del user pasado por parametro
+			BeanUser userProfile = new BeanUser();
+			if(request.getAttribute("user_page")==null){
+				userProfile.getProfile(user);
+			}
+			else{
+				userProfile.getProfile(my_user);
+
+			}
 			BeanTweets bts = new BeanTweets();
 			List<BeanTweet> alltweets = null;				//initialize the list of tweets we will return
 			if(session.getAttribute("isGuest") == null){	//if the user is a guest
-				alltweets = bts.getPersonalTweets(session.getAttribute("user").toString()); //return the list of tweets of the people we follow
+				if(request.getAttribute("user_page")==null){
+					alltweets = bts.getPersonalTweets(user);//return the list of tweets of the people user follows
+				}
+				else{
+					alltweets = bts.getPersonalTweets(my_user);//return the list of tweets of the people we follow
+
+				}
+				//alltweets = bts.getPersonalTweets(user); //return the list of tweets of the people we follow
 				BeanComparator reverseOrderBeanComparator = new BeanComparator("time", new ReverseComparator(new ComparableComparator()));
 				Collections.sort(alltweets, reverseOrderBeanComparator);
 				//System.out.println(session.getAttribute("user").toString());

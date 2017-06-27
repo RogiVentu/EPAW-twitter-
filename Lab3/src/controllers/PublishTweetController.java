@@ -44,16 +44,6 @@ public class PublishTweetController extends HttpServlet {
 		
 		System.out.println("PublishTweetController, loading: TweetController");
 		HttpSession session = request.getSession();
-		/*int i = 1;
-	    while (i >= 0) {
-			session.removeAttribute("title" + i);
-			session.removeAttribute("text" + i);
-			session.removeAttribute("user" + i);
-			session.removeAttribute("time" + i);
-			i--;
-		}
-	    i++;
-	    session.removeAttribute("numtweets");*/
 		try{
 			//DAO dao = new DAO();
 			BeanTweet tweet = new BeanTweet();										//initialize tweet to fill it with the needed data

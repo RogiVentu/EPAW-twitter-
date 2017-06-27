@@ -44,16 +44,6 @@ public class TweetsController extends HttpServlet {
 		
 		System.out.println("TweetsController, loading: ViewMainTweets.jsp");
 		HttpSession session = request.getSession();
-		/*int i = 1;
-	    while (i >= 0) {
-			session.removeAttribute("title" + i);
-			session.removeAttribute("text" + i);
-			session.removeAttribute("user" + i);
-			session.removeAttribute("time" + i);
-			i--;
-		}
-	    i++;
-	    session.removeAttribute("numtweets");*/
 		try{
 			BeanTweets bts = new BeanTweets();
 			List<BeanTweet> alltweets = null;				//initialize the list of tweets we will return
