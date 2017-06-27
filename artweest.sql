@@ -57,7 +57,7 @@ LOCK TABLES `tweets` WRITE;
 INSERT INTO `tweets` (`title`,`text`,`user`,`time`,`picture`) VALUES ('Cach Me Outside','Just come outside and catch me man u know u cant','Danielle','14-06-2017 17:34:00',NULL),('I hate mondays','OH.. Today is monday... Please kill me mates','Danielle','13-06-2017 18:52:34',NULL),('Restaurant Gourmet','El restaurant de la Garriga anomenat Jamelexirogi està molt bo, fan uns plats molt gourmets','laieee','14-06-2017 02:23:14',NULL),('Comença l\'estiu, per fí!','Per fi he acabat els examens ara cap a la platja!','laieee','12-06-2017 11:23:14',NULL),('I am the best','We deserve that win, and i deserve the mpv title in finals because i did it all, my team did zero work.','Durant','13-06-2017 09:23:14',NULL),('I love you Lebron','Just right now i found Lebron James in one party, he is a good boy at all, i think i feel in love with him','Durant','15-06-2017 00:33:51',NULL),('I can\'t resist this','Oh guys, im sorry i cant resist go to bed with Lebron, he is an amazing bro','Durant','15-06-2017 03:53:12',NULL),('Funsiona?','Si lo ase es increible bro','Durant','18-06-3024 04:53:12',NULL);
 UNLOCK TABLES;
 
-
+SELECT * FROM users;
 #SELECT * FROM tweets;
 SELECT * FROM follows;
 #SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = 'Hancock' AND T.user = F.followed;
@@ -65,4 +65,4 @@ SELECT * FROM follows;
 #SELECT name, surnames, gender, datebirth, username, email FROM users WHERE username = 'Hancock';
 #SELECT id, title, text , user, time FROM tweets T WHERE T.user = 'Durant';
 #SELECT COUNT(*) AS countf FROM follows WHERE followed='Danielle' AND byuser='Hancock';
-DELETE FROM follows WHERE followed= 'Danielle' AND byuser='Hancock';
+#DELETE FROM follows WHERE followed= 'Danielle' AND byuser='Hancock';

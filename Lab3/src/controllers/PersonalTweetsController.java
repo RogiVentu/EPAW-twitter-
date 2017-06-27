@@ -48,7 +48,13 @@ public class PersonalTweetsController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user= (String)request.getParameter("user_page");
 		String my_user= (String)request.getAttribute("user_page");
-		
+		String test = (String)session.getAttribute("user");
+		if(test.equals(my_user) && session.getAttribute("isGuest")!=null){ //if is my page and im a guest
+			session.setAttribute("mypage", 1);
+		}
+		else{
+			session.setAttribute("mypage", null);//im registered so i can have ppage
+		}
 
 		try{
 			//pasarle un parámetro ya sea tu usuario o el de otro
@@ -63,7 +69,7 @@ public class PersonalTweetsController extends HttpServlet {
 			}
 			BeanTweets bts = new BeanTweets();
 			List<BeanTweet> alltweets = null;				//initialize the list of tweets we will return
-			if(session.getAttribute("isGuest") == null){	//if the user is a guest
+			//if(session.getAttribute("isGuest") == null){	//if the user is a guest
 				if(request.getAttribute("user_page")==null){
 					alltweets = bts.getPersonalTweets(user);//return the list of tweets of the people user follows
 				}
@@ -76,7 +82,7 @@ public class PersonalTweetsController extends HttpServlet {
 				Collections.sort(alltweets, reverseOrderBeanComparator);
 				//System.out.println(session.getAttribute("user").toString());
 				//System.out.println(alltweets.size());
-			}
+			//}
 			
 		session.setAttribute("userProfile", userProfile);
 		session.setAttribute("alltweets", alltweets);		//store it in the session to take it in ViewMainTweets.jsp	

@@ -10,8 +10,8 @@
 
 <div>
 	<c:if test="${not empty isGuest}">
-		<p>If you want to have profile page you need to sign up and get
-			logged !</p>
+		<p><b>If you want to have profile page you need to sign up and get
+			logged !</b></p>
 	</c:if>
 	<c:if test="${empty isGuest}">
 		<c:set var="userP" value="${userProfile}" />

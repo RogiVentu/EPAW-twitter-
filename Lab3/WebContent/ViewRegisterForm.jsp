@@ -127,7 +127,7 @@
 					</div>
 
 					<input class="button button_submit_register" name="sumbit"
-						type="submit" value="Enviar">
+						type="submit" value="Submit">
 				</fieldset>
 			</form>
 		</div>

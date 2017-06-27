@@ -20,9 +20,14 @@
 	<c:forEach var="username" items="${userlist}">
 		<div class="u_found">
 			<!--  <div class="username_s"><b>${username.user}</b></div>-->
+			<c:if test="${not empty isGuest}">
+				<input id="${username.user}" class="username_s" type="submit" name="user_f_pp"
+				onclick="go_opage(this)" value="${username.user}">
+			</c:if>
+			<c:if test="${empty isGuest}">
 			<input class="username_s" type="submit" name="user_f_pp"
 				onclick="go_ppage(this)" value="${username.user}">
-			<c:if test="${empty isGuest}">
+			
 				<input id="${username.user}" class="follow" type="submit"
 					onclick="follow(this)" name="user_f" value="Follow">
 			</c:if>
@@ -65,6 +70,16 @@
 		});
 	    
 	};
+</script>
+
+<script>
+function go_opage(element) {
+	var id = element.id;
+    $('#content').load('PersonalTweetsController', {
+		user_page : id
+	});
+    
+};	
 </script>
 
 

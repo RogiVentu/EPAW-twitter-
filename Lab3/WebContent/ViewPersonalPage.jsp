@@ -7,11 +7,11 @@
 
 <title>Insert title here</title>
 
-<c:if test="${not empty isGuest}">
+<c:if test="${not empty mypage}">
 	<p><b>If you want personal page, please sign up and get
 		registered !</b></p><br><br>
 </c:if>
-<c:if test="${empty isGuest}">
+<c:if test="${empty mypage}">
 	<c:set var="userP" value="${userProfile}" />
 	<div style="display: flex;">
 		<div class="pers_img"></div>

@@ -135,6 +135,29 @@ public class BeanUser implements Serializable {
 		return null;
 	}
 	
+	public List<BeanUser> getFollowedUsers(String user) throws SQLException { // connect with the database and fill the ResultSet
+
+		ResultSet rst = null;
+		List<BeanUser> users = new ArrayList<>(); // here we store each user that corresponds with the search
+		try {
+			DAO dao = new DAO();
+			rst = dao.executeSQL("SELECT followed FROM follows WHERE username byUser='" + user + "';"); // returns every user that starts or is user
+			while (rst.next()) {
+				BeanUser bt = new BeanUser();
+				bt.setUser(rst.getString("followed")); // for each new BeanUser we store the username of the result set
+				users.add(bt);
+			}
+			dao.disconnectBD(); // close the connection with the database
+			return users;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception ocurred with searched users");
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	
 	public BeanUser getProfile(String user) throws SQLException {
 		ResultSet rst = null;
 		BeanUser usert = this;// here we store each user that corresponds with the search
