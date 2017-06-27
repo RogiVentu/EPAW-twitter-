@@ -26,6 +26,11 @@ public class DAO {
 	public ResultSet executeSQL(String query) throws SQLException {
 		return statement.executeQuery(query);
 	}
+	
+	public int executeSQLUpdate(String query) throws SQLException {
+		return statement.executeUpdate(query);
+	}
+	
 	public ArrayList<String> listUsernames() throws SQLException
 	{
 		

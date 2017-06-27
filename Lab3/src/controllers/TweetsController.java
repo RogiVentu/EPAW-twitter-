@@ -47,7 +47,7 @@ public class TweetsController extends HttpServlet {
 		try{
 			BeanTweets bts = new BeanTweets();
 			List<BeanTweet> alltweets = null;				//initialize the list of tweets we will return
-			if(session.getAttribute("isGuest") != null){	//if the user is a guest
+			if(session.getAttribute("isGuest") != null || session.getAttribute("user").equals("admin")){	//if the user is a guest
 				//System.out.println("isGuest = true");
 				alltweets = bts.getTweets();				//return all the tweets created
 				//with the BeanComparator and Collections we reverse the list of tweets returned to 

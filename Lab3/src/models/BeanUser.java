@@ -181,7 +181,25 @@ public class BeanUser implements Serializable {
 			return usert;
 		}
 	}
+	
+	public void deleteUser(String us){
+		try {
+			DAO dao = new DAO();
 
+			int res = dao.executeSQLUpdate("DELETE FROM users WHERE username='"+us+"';");
+			if(res == 1){
+				System.out.println("Correct Delete "+us);
+			}else{
+
+				System.out.println("Incorrect Delete "+us);
+			}
+			dao.disconnectBD();
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception ocurred with Delete User");
+			e.printStackTrace();
+		}
+	}
 	/* Check if all the fields are filled correctly */
 	public boolean isComplete() {
 		return (hasValue(getUser()) && hasValue(getMail()) && hasValue(getName()) && hasValue(getSurnames())

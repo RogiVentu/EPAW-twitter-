@@ -170,6 +170,16 @@ label{
         border-radius:5px;
     }
 
+.t_found {
+        border: inherit;
+        display: inherit;
+        justify-content: inherit;
+        padding-top:inherit;
+        padding-bottom:inherit;
+        border-radius:inherit;
+        color: inherit;
+}
+
 .username_s
 {
 		margin-left:2%;
@@ -182,6 +192,16 @@ label{
 }
 
 .follow
+{
+  margin-right:2%;  
+}
+
+.delete_u
+{
+  margin-right:2%;  
+}
+
+.delete_t
 {
   margin-right:2%;  
 }

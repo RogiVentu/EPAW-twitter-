@@ -106,7 +106,26 @@ public class BeanTweet {
 			}
 		}
 	}
+	
+	public void deleteTweet(String idt){
+		try {
+			DAO dao = new DAO();
 
+			int res = dao.executeSQLUpdate("DELETE FROM tweets WHERE id='"+idt+"'");
+			if(res == 1){
+				System.out.println("Correct Delete "+idt);
+			}else{
+
+				System.out.println("Incorrect Delete "+idt);
+			}
+			dao.disconnectBD();
+		}catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception ocurred with Delete Tweet");
+			e.printStackTrace();
+		}
+	}
+	
 	public boolean isComplete() {
 		return (hasValue(getId()) && hasValue(getTitle()) && hasValue(getText()) && hasValue(getUser())
 				&& hasValue(getTime()));

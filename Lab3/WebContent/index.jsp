@@ -25,7 +25,12 @@
 
 	<div id="navigation">
 		<c:if test="${user != NULL}">
-			<jsp:include page="ViewMenuLogged.jsp" />
+			<c:if test="${user eq admin}">
+				<jsp:include page="ViewMenuLoggedAdmin.jsp" />
+			</c:if>
+			<c:if test="${user != admin}">
+				<jsp:include page="ViewMenuLogged.jsp" />
+			</c:if>
 		</c:if>
 		<c:if test="${user == NULL}">
 			<jsp:include page="ViewMenuNotLogged.jsp" />

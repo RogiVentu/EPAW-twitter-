@@ -1,6 +1,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,17 +13,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.beanutils.BeanComparator;
+import org.apache.commons.collections.comparators.ComparableComparator;
+import org.apache.commons.collections.comparators.ReverseComparator;
+
+
+import models.BeanUser;
+import utils.DAO;
+
 /**
- * Servlet implementation class MenuController
+ * Servlet implementation class AnonymusController
  */
-@WebServlet("/MenuController")
-public class MenuController extends HttpServlet {
+@WebServlet("/DeleteUserController")
+public class DeleteUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MenuController() {
+    public DeleteUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,26 +41,18 @@ public class MenuController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		System.out.println("DeleteController");
 		HttpSession session = request.getSession();
-		
-		if (session.getAttribute("user")!=null) {
-		
-			if(session.getAttribute("user").equals("admin")){
-				System.out.println("MenuController, loading: ViewMenuLoggedAdmin ");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMenuLoggedAdmin.jsp");
-				dispatcher.forward(request, response);
-			}else{
-				System.out.println("MenuController, loading: ViewMenuLogged ");
-				RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMenuLogged.jsp");
-				dispatcher.forward(request, response);
-			}
-		}
-		else {
+		String usertodelete = (String)request.getParameter("usertodelete");
+		try{
+			BeanUser bu = new BeanUser();
+			bu.deleteUser(usertodelete);
+		}catch(Exception e){
+			System.out.println("excepcion DeleteController");
 			
-			System.out.println("MenuController, loading: ViewMenuNotLogged ");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("ViewMenuNotLogged.jsp");
-			dispatcher.forward(request, response);
 		}
+		
 	}
 
 	/**
