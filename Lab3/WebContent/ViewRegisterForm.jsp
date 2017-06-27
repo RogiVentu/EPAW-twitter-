@@ -140,16 +140,15 @@
 
 
 	<script>
-		$(document).ready(
-				function() {
-					$("#registerForm").validate(
-							{
+	
+		alert("carrego");
+		$(document).ready(function() {
+					$("#registerForm").validate({
 								submitHandler : function(form) {
-									$('#content').load('RegisterController',
-											$("#registerForm").serialize());
+									$('#content').load('RegisterController', $("#registerForm").serialize());
 								}
 							});
-				});
+					});
 	</script>
 
 	<script>

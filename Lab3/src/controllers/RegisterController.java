@@ -36,7 +36,7 @@ public class RegisterController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	   System.out.println("RegisterController.");
+	   System.out.println("RegisterController2");
 	   BeanUser user = new BeanUser();
 		
 	   try {

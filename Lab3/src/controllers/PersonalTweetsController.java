@@ -48,6 +48,8 @@ public class PersonalTweetsController extends HttpServlet {
 		HttpSession session = request.getSession();
 		String user= (String)request.getParameter("user_page");
 		String my_user= (String)request.getAttribute("user_page");
+		System.out.println(user);
+		System.out.println(my_user);
 		String test = (String)session.getAttribute("user");
 		if(test.equals(my_user) && session.getAttribute("isGuest")!=null){ //if is my page and im a guest
 			session.setAttribute("mypage", 1);

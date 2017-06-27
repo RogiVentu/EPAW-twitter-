@@ -125,6 +125,7 @@ function go_opage(element) {
 			function successFunc(data, status) {
 				//aqui es donde se cambia el boton follow por unfollow
 				console.log("Correct unfollow execution");
+				that.value = "Follow";
 
 			}
 
