@@ -27,8 +27,44 @@
 	</div>
 	<br><br>
 
+	<c:if test="${not empty is_my_page}">
+	<c:forEach  var="bt" items="${alltweets}">
+    	<div><b><u>${bt.title}</u></b> - at ${bt.time}<input class="deltw" name="${bt.user}" id ="${bt.id}" onclick="remove(this)" value = "Delete"/><br><br>${bt.text}<br><br>By: ${bt.user}</div><br><br><br><br/>
+  	</c:forEach>
+</c:if>
+<c:if test="${empty is_my_page}">
 	<c:forEach  var="bt" items="${alltweets}">
     	<div><b><u>${bt.title}</u></b> - at ${bt.time}<br><br>${bt.text}<br><br>By: ${bt.user}</div><br><br><br><br/>
   	</c:forEach>
 </c:if>
+</c:if>
 
+<script>
+	function remove(that){
+		var x = that.id;
+	    if (that.value=="Delete") {
+			$.ajax({ 
+		        type: "POST",
+		        url: 'DeleteTweetController',
+		        data: {tweettodelete: x},
+		        success: successFunc,
+		        error: errorFunc
+		    });
+	
+		    function successFunc(data, status) {
+		    	$(document).ready(function() {
+		    		$('#content').load('ContentController', {
+						content : "PersonalTweetsController"
+					}); 
+		            
+		    	});
+		    	console.log("Correct delete execution");
+		    }
+	
+		    function errorFunc() {
+		    	console.log("Bad delete execution");
+		    }		
+	    }
+	    console.log(that.value);
+	}
+</script>

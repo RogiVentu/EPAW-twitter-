@@ -67,6 +67,7 @@ public class PersonalTweetsController extends HttpServlet {
 			}
 			else{
 				userProfile.getProfile(my_user);
+				request.setAttribute("is_my_page", 1);
 
 			}
 			BeanTweets bts = new BeanTweets();
