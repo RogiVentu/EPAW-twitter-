@@ -7,18 +7,29 @@
 <title>Search page</title>
 
 <form id = "serach_users">
-	<input type = "text" placeholder="Search for username..." maxlength="30" class="search" name="s_user">
+	<input type = "text" placeholder="Search tweets for username..." maxlength="30" class="search" name="s_user">
 	<input type="submit" value="Search" class="submitsearch">
 </form><br><br><br>
 
 <div>
 
-	<c:forEach  var="username" items="${userlist}">
+	<c:forEach var="entry" items="${hashmaptweets}">
+		<div ><b>${entry.key}</b></div>	
+		<c:forEach var="tweet" items="${entry.value}">
+			<div class="f_tweet">
+				<div><b><u>${tweet.title}</u></b> - at ${tweet.time}<br><br>${tweet.text}</div>
+				<input id="${tweet.id}" class="delete_t" type="submit" onclick="remove(this)" name="tweet_d" value="Delete">
+			</div><br><br><br><br/>
+		</c:forEach>
+	</c:forEach>
+	
+	<!--
+	<c:forEach  var="username" items="${foundusers}">
 		<div class="u_found">
-  			<!--  <div class="username_s"><b>${username.user}</b></div>-->
-  			<input class="username_s" type="submit" name="user_f_pp" value="${username.user}"></br>
+  			<div ><b>${username.user}</b></div>
+  			
   			<c:forEach  var="tweetslist" items="${tweetslist}">
-  				<div><b><u>${tweetslist.title}</u></b> - at ${tweetslist.time}<br><br>${tweetslist.text}</div><br><br><br><br/>
+  				<div class="f_tweet"><b><u>${tweetslist.title}</u></b> - at ${tweetslist.time}<br><br>${tweetslist.text}</div><br><br><br><br/>
 	  			<c:if test="${empty isGuest}">
 	  				<c:if test="${isAdmin eq 1}">
 	  					<input id="${tweetslist.id}" class="delete_t" type="submit" onclick="drop(this)" name="tweet_d" value="Delete">
@@ -27,7 +38,7 @@
   			</c:forEach>
 		</div><br><br><br>
   	</c:forEach>
-	
+	-->
 </div>
 
 
@@ -44,8 +55,10 @@
 							}
 						});
 			});
-	
-	function drop(that){
+</script>
+
+<script>
+	function remove(that){
 		var x = that.id;
 	    if (that.value=="Delete") {
 			$.ajax({ 
@@ -55,13 +68,19 @@
 		        success: successFunc,
 		        error: errorFunc
 		    });
-
+	
 		    function successFunc(data, status) {
-		    	console.log("Correct delete tweet execution");
+		    	$(document).ready(function() {
+		    		$('#content').load('ContentController', {
+						content : "SearchTweetController"
+					}); 
+		            
+		    	});
+		    	console.log("Correct delete execution");
 		    }
-
+	
 		    function errorFunc() {
-		    	console.log("Bad delete tweet execution");
+		    	console.log("Bad delete execution");
 		    }		
 	    }
 	    console.log(that.value);

@@ -233,6 +233,19 @@ public class BeanUser implements Serializable {
 			e.printStackTrace();
 		}
 	}
+	public void changeValue(String who, String what, String value){
+		
+		try {
+			DAO dao = new DAO();
+
+			int r = dao.executeSQLUpdate("UPDATE users SET "+what+"='" + value +"' WHERE username='" + who +"'");
+			dao.disconnectBD(); // close the connection with the database
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Exception when modify value");
+		}
+		
+	}
 	/* Check if all the fields are filled correctly */
 	public boolean isComplete() {
 		return (hasValue(getUser()) && hasValue(getMail()) && hasValue(getName()) && hasValue(getSurnames())

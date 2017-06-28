@@ -36,6 +36,17 @@ label{
 	background: rgb(255,0,0);
 }
 
+.delete_t{
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+
+.f_tweet{
+  margin-top:5%;
+  border-style: solid;
+  border-radius:5px;
+}
+
 .tit{
 	color: white;
 	font-family:omnespro, sans-serif;
@@ -43,6 +54,18 @@ label{
 	position: relative;
 	top: 50px;
 	text-align: center;
+}
+
+.change {
+	text-align: center;
+	padding: 5px 20px;;
+	background: rgb(100,100,100);
+	border: 1px solid rgb(50,50,50);
+	color: white;
+	margin-left: 10px;
+}
+.change:hover{
+	background: rgb(150,150,150);
 }
 
 .imglogo{

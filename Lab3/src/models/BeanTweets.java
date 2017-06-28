@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import models.BeanTweet;
@@ -103,6 +104,41 @@ public class BeanTweets {
 		return null;
 	}
 	
+	public HashMap<String, java.util.List<BeanTweet>> getSearchedTweets(List<BeanUser> userlist){
+		
+		HashMap<String, List<BeanTweet>> tweets = new HashMap<>();
+		ResultSet rst = null;
+		
+		try {
+			DAO dao = new DAO();
+			for (BeanUser user : userlist) {
+				List<BeanTweet> alltweets= new ArrayList<>();		//initialize the list of BeanTweet that we will return
+				System.out.println(user);
+				String username = user.getUser();
+				rst = dao.executeSQL("SELECT id, title, text , user, time FROM tweets T WHERE T.user = '" + username + "';");		
+				while(rst.next()){
+					BeanTweet bt = new BeanTweet();
+					bt.setId(rst.getString("id"));
+					bt.setTitle(rst.getString("title"));
+		    		bt.setText(rst.getString("text"));
+		    		bt.setUser(rst.getString("user"));
+		    		bt.setTime(rst.getString("time"));
+		    		
+					alltweets.add(bt);
+				}
+				if(!(alltweets.isEmpty()))
+					tweets.put(username,alltweets);
+			}
+			
+			dao.disconnectBD();
+			return tweets;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 	/*********INSERT **********/
 	/*public void setTweets(BeanTweet[] tweets) {
 		this.alltweets = alltweets;

@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -51,14 +52,14 @@ public class SearchTweetController extends HttpServlet {
 			//crete method in BeanUser getSearchedUsers
 			BeanUser users = new BeanUser();
 			BeanTweets twe = new BeanTweets();
-			List<BeanTweet> usertweets = null;
+			HashMap<String, List<BeanTweet>> usertweets = null;	//contains user as key and list of tweets as value
 			List<BeanUser> userlist = null;						//initialize list of searched users
 			String search = request.getParameter("s_user");
 			userlist = users.getSearchedUsers(search,session.getAttribute("user").toString());			//getSearchedUsers returns the list of users
-			usertweets = twe.getPersonalTweets(search);
-			session.setAttribute("userlist", userlist);			//store it in the session to take it from the jsp
+			usertweets = twe.getSearchedTweets(userlist);
+			session.setAttribute("foundusers", userlist);			//store it in the session to take it from the jsp
 			//request.setAttribute("userlist", userlist);
-			session.setAttribute("tweetslist", usertweets);
+			session.setAttribute("hashmaptweets", usertweets);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewSearchTweets.jsp");
 		    dispatcher.forward(request, response);
 		

@@ -58,7 +58,7 @@ INSERT INTO `tweets` (`title`,`text`,`user`,`time`,`picture`) VALUES ('Cach Me O
 UNLOCK TABLES;
 
 #SELECT * FROM users;
-#SELECT * FROM tweets;
+#+SELECT * FROM tweets;
 #SELECT * FROM follows;
 #SELECT title, text , user, time FROM tweets T, follows F WHERE F.byUser = 'Hancock' AND T.user = F.followed;
 #SELECT username FROM users WHERE username like'd%'ORDER BY username;
