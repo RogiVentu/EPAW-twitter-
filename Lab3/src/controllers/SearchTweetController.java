@@ -54,7 +54,7 @@ public class SearchTweetController extends HttpServlet {
 			List<BeanTweet> usertweets = null;
 			List<BeanUser> userlist = null;						//initialize list of searched users
 			String search = request.getParameter("s_user");
-			userlist = users.getSearchedUsers(search);			//getSearchedUsers returns the list of users
+			userlist = users.getSearchedUsers(search,session.getAttribute("user").toString());			//getSearchedUsers returns the list of users
 			usertweets = twe.getPersonalTweets(search);
 			session.setAttribute("userlist", userlist);			//store it in the session to take it from the jsp
 			//request.setAttribute("userlist", userlist);

@@ -11,6 +11,7 @@ import models.BeanUser;
 public class DAO {
 	private Connection connection;
 	private Statement statement;
+	private Statement statement2;//to execute a query inside a result set without closing it
 	private PreparedStatement ps;
 	int status;
 
@@ -20,6 +21,7 @@ public class DAO {
 		Class.forName("com.mysql.jdbc.Driver").newInstance();
 		connection = DriverManager.getConnection("jdbc:mysql://localhost/ts1?user=" + user + "&password=" + password);
 		statement = connection.createStatement();
+		statement2 = connection.createStatement();
 	}
 
 	// execute queries
@@ -27,6 +29,9 @@ public class DAO {
 		return statement.executeQuery(query);
 	}
 	
+	public ResultSet execute2SQL(String query) throws SQLException {
+		return statement2.executeQuery(query);
+	}
 	public int executeSQLUpdate(String query) throws SQLException {
 		return statement.executeUpdate(query);
 	}

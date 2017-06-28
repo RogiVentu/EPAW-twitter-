@@ -21,6 +21,7 @@ public class BeanUser implements Serializable {
 	private String passconf = "";
 	private String mail = "";
 	private int isAdmin = 0;
+	private String following = "";
 
 	/* Control which parameters have been correctly filled */
 	private int[] error = { 0, 0 };
@@ -111,10 +112,19 @@ public class BeanUser implements Serializable {
 		this.mail = mail;
 	}
 
+	public String getFollowing() {
+		return following;
+	}
+
+	public void setFollowing(String following) {
+		this.following = following;
+	}
+	
 	/* Logic Functions */
-	public List<BeanUser> getSearchedUsers(String user) throws SQLException { // connect with the database and fill the ResultSet
+	public List<BeanUser> getSearchedUsers(String user, String myuser) throws SQLException { // connect with the database and fill the ResultSet
 
 		ResultSet rst = null;
+		ResultSet isFollow = null;
 		List<BeanUser> users = new ArrayList<>(); // here we store each user that corresponds with the search
 		try {
 			DAO dao = new DAO();
@@ -122,6 +132,17 @@ public class BeanUser implements Serializable {
 			while (rst.next()) {
 				BeanUser bt = new BeanUser();
 				bt.setUser(rst.getString("username")); // for each new BeanUser we store the username of the result set
+				isFollow = dao.execute2SQL("SELECT COUNT(*) AS cfollow FROM follows WHERE followed='" + rst.getString("username") +"' AND byUser = '" + myuser + "';");
+				int count = 0;
+				if(isFollow.next()){
+					count = Integer.parseInt(isFollow.getString("cfollow")) ;
+				}
+				if(count == 0){
+					bt.setFollowing("Follow");
+				}
+				else{
+					bt.setFollowing("Unfollow");
+				}
 				users.add(bt);
 			}
 			dao.disconnectBD(); // close the connection with the database
@@ -138,13 +159,25 @@ public class BeanUser implements Serializable {
 	public List<BeanUser> getFollowedUsers(String user) throws SQLException { // connect with the database and fill the ResultSet
 
 		ResultSet rst = null;
+		ResultSet isFollow = null;
 		List<BeanUser> users = new ArrayList<>(); // here we store each user that corresponds with the search
 		try {
 			DAO dao = new DAO();
-			rst = dao.executeSQL("SELECT followed FROM follows WHERE username byUser='" + user + "';"); // returns every user that starts or is user
+			rst = dao.executeSQL("SELECT followed FROM follows WHERE byUser='" + user + "';"); // returns every user that starts or is user
 			while (rst.next()) {
 				BeanUser bt = new BeanUser();
 				bt.setUser(rst.getString("followed")); // for each new BeanUser we store the username of the result set
+				isFollow = dao.execute2SQL("SELECT COUNT(*) AS cfollow FROM follows WHERE followed='" + rst.getString("followed") +"' AND byUser = '" + user + "';");
+				int count = 0;
+				if(isFollow.next()){
+					count = Integer.parseInt(isFollow.getString("cfollow")) ;
+				}
+				if(count == 0){
+					bt.setFollowing("Follow");
+				}
+				else{
+					bt.setFollowing("Unfollow");
+				}
 				users.add(bt);
 			}
 			dao.disconnectBD(); // close the connection with the database

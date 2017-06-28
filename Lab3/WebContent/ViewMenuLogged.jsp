@@ -13,7 +13,7 @@
 					Page</a></li>
 			<li><a href=# class="perspage" id="PersonalTweetsController">Personal
 					Page</a></li>
-			<li><a href="#">Following</a></li>
+			<li><a href="#"class="folpage" id = "FollowedController">Following</a></li>
 			<li><a href=# class="profpage" id="ProfileController">${user}
 					(profile page)</a></li>
 			<li><a href=# class="logpage" id="LogoutController">Logout</a></li>
@@ -40,7 +40,13 @@
 				content : $(this).attr('id')
 			});
 		});
-
+		
+		$(".folpage").click(function(event) {
+			$('#content').load('ContentController', {
+				content : $(this).attr('id')
+			});
+		});
+		
 		$(".mainpage").click(function(event) {
 			$('#content').load('ContentController', {
 				content : $(this).attr('id')

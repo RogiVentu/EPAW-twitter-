@@ -50,17 +50,17 @@ public class FollowedController extends HttpServlet {
 			//create BeanUser to get list of searched users
 			//crete method in BeanUser getSearchedUsers
 			BeanUser users = new BeanUser();
-			List<BeanUser> userlist = null;						//initialize list of searched users
+			List<BeanUser> followedlist = null;						//initialize list of searched users
 			String user = (String)session.getAttribute("user");
-			userlist = users.getFollowedUsers(user);			//getSearchedUsers returns the list of users
-			session.setAttribute("userlist", userlist);			//store it in the session to take it from the jsp
-			request.setAttribute("userlist", userlist);
+			followedlist = users.getFollowedUsers(user);			//getFollowedUsers returns the list of users
+			session.setAttribute("followedlist", followedlist);			//store it in the session to take it from the jsp
+			request.setAttribute("userlist", followedlist);
 		    RequestDispatcher dispatcher = request.getRequestDispatcher("ViewFollowed.jsp");
 		    dispatcher.forward(request, response);
 		
 		}
 		catch(Exception e){
-			System.out.println("Exception SearchController");
+			System.out.println("Exception FollowedController");
 			
 		}
 		
